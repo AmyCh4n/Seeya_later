@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<head>
+  <title> See ya Later - Visualisation Page </title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name='author' content='Eleni Kalantzi' />
+  <link rel="stylesheet" href="./css/style.css" />
+  <!--<link rel="stylesheet" href="./css/style.css"/>-->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" type="text/css" crossorigin="">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js" crossorigin=""></script>
+  <script src="https://leaflet.github.io/Leaflet.Graticule/Leaflet.Graticule.js"></script>
+
+</head>
+
+<body onload="init()">
+  <!-- Navigation -->
+  <nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo">SEE YA LATER</label>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a class="active" href="./project.html">Visualisation</a></li>
+      <li><a href="./group.html">Story</a></li>
+    </ul>
+  </nav>
+  <div id="side_panel">
+    <h2>KEY HEALTH DISPARITIES IN ENGLAND</h2>
+    <p>
+    <div style="position:relative; top:10px;">
+      <h3>Select what to display on the map:</h3>
+      </p>
+      <div>
+        <input type="radio" id="Deaths" name="drone" value="Deaths" checked>
+        <label for="Deaths">Preventable Deaths</label>
+      </div>
+      <div>
+        <input type="radio" id="Clusters" name="drone" value="Clusters">
+        <label for="Clusters">Health Geodemographic Clusters</label>
+      </div>
+    </div>
+  </div>
+  <div id="mapbox">
+
+  </div>
+
+  <body>
+    <script type="text/javascript">
+      function init() {
+        // create map and set center and zoom level
+        var map = new L.map('mapbox');
+        map.setView([51.5074, 0.1278], 5);
+
+        var mapboxTileUrl = 'https://api.mapbox.com/styles/v1/zcftssw/cknagpjwh3dm617qxeokn7amw/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiemNmdHNzdyIsImEiOiJja212c24wdW4wNmsxMm9tdG5udzVsMjd4In0.HB4Oh1U4CqgR4psD72awjQ';
+
+        L.tileLayer(mapboxTileUrl, {
+          attribution: 'Background map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+        }).addTo(map);
+      }
+    </script>
+    </html>
