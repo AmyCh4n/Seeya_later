@@ -280,13 +280,14 @@ input[type='radio']:checked ~label {
 		  color:  #F27405;
 		}
 
-label:hover {
+#radio div label:hover {
   color: #F27405;
 }
 
-label:checked {
+#radio div label:checked {
   color: #F27405;
 }
+
 
 #mapbox{
 	position: fixed;
@@ -295,14 +296,16 @@ label:checked {
 	width:65%;
 	right:0;
 	z-index: 0;
+	outline: none
 }
 
 .box{
         color: #fff;
-        padding: 20px;
-        display: none;
+				text-align: left;
+				display: none;
         margin-top: 20px;
+				padding-top: 20px;
     }
 
-.Deaths{ background: #ff0000; }
-.Clusters{ background: #228B22; }
+.Deaths{}
+.Clusters{}
