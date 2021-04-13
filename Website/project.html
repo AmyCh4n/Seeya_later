@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<head>
+  <title> See ya Later - Visualisation Page </title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name='author' content='Eleni Kalantzi' />
+  <link rel="stylesheet" href="./css/style.css" />
+  <!--<link rel="stylesheet" href="./css/style.css"/>-->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" type="text/css" crossorigin="">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js" crossorigin=""></script>
+  <script src="https://leaflet.github.io/Leaflet.Graticule/Leaflet.Graticule.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo">SEE YA LATER</label>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a class="active" href="./project.html">Visualisation</a></li>
+      <li><a href="./group.html">Story</a></li>
+    </ul>
+  </nav>
+  <div id="side_panel">
+    <h2>KEY HEALTH DISPARITIES IN ENGLAND</h2>
+    <p>
+    <div style="position:relative; top:10px;">
+      <h3>Select what to display on the map:</h3>
+      </p>
+      <div id="radio">
+        <div>
+          <input type="radio" id="Deaths" name="drone" value="Deaths">
+          <label for="Deaths">Preventable Deaths</label>
+        </div>
+        <div>
+          <input type="radio" id="Clusters" name="drone" value="Clusters">
+          <label for="Clusters">Health Geodemographic Clusters</label>
+        </div>
+      </div>
+    </div>
+    <div class="Deaths box"> You have selected <strong>deaths</strong> so I am here </div>
+    <div class="Clusters box"> You have selected <strong>clusters</strong> so I am here </div>
+  </div>
+  <div id="mapbox"></div>
+
+  <body>
+
+    <!-- Displaying the basemap -->
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoiemNmdHNzdyIsImEiOiJja212c24wdW4wNmsxMm9tdG5udzVsMjd4In0.HB4Oh1U4CqgR4psD72awjQ';
+      var map = new mapboxgl.Map({
+        container: 'mapbox', // container id
+        style: 'mapbox://styles/zcftssw/cknagpjwh3dm617qxeokn7amw', // style URL
+        center: [-2, 50], // starting position [lng, lat]
+        zoom: 5.8 // starting zoom
+      });
+      //Adding a hoveredStateId
+      var hoveredStateId = null;
+      // Add zoom and rotation controls to the map.
+      map.addControl(new mapboxgl.NavigationControl());
+      // Add a search bar to the map
+      map.addControl(
+        new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          mapboxgl: mapboxgl,
+          countries: 'gb' //Limit search to GB
+        }), 'top-left'
+      );
+
+      // Read in MSOA data and check that it worked
+      const msoas = './data/MSOAs.geojson'
+      console.log(msoas);
+
+      // When map loads...
+      map.on('load', function() {
+        // Load the MSOA geojson data
+        map.addSource('MSOAs', {
+          'type': 'geojson',
+          'data': msoas,
+          'generateId': true
+        });
+
+        // visualize MSOA polygon.
+        map.addLayer({
+          'id': 'msoa',
+          'type': 'fill',
+          'source': 'MSOAs', // reference the data source
+          'layout': {},
+          'paint': {
+            'fill-color': '#F27405', // orange color fill
+            'fill-opacity': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              1,
+              0.5 //Change opacity based on hover state
+            ]
+          }
+        });
+        map.addLayer({
+          'id': 'outline',
+          'type': 'line',
+          'source': 'MSOAs',
+          'layout': {},
+          'paint': {
+            'line-color': '#ffecbd',
+            'line-width': 0.5
+          }
+        });
+
+        map.on('mousemove', 'msoa', function(e) {
+          if (e.features.length > 0) {
+            if (hoveredStateId !== null) {
+              map.setFeatureState({
+                source: 'MSOAs',
+                id: hoveredStateId
+              }, {
+                hover: false
+              });
+            }
+            hoveredStateId = e.features[0].id;
+            map.setFeatureState({
+              source: 'MSOAs',
+              id: hoveredStateId
+            }, {
+              hover: true
+            });
+          }
+        });
+
+        // When the mouse leaves the state-fill layer, update the feature state of the
+        // previously hovered feature.
+        map.on('mouseleave', 'msoas', function() {
+          if (hoveredStateId !== null) {
+            map.setFeatureState({
+              source: 'MSOAs',
+              id: hoveredStateId
+            }, {
+              hover: false
+            });
+          }
+          hoveredStateId = null;
+        });
+
+      });
+    </script>
+
+
+    <!-- radio button response-->
+    <script>
+      $('input[type="radio"]').click(function() {
+        if ($(this).is(':checked')) {
+          var inputValue = $(this).attr("value");
+          var targetBox = $("." + inputValue);
+          $(targetBox).show();
+          $(".box").not(targetBox).hide();
+        }
+      });
+    </script>
+
+    </html>
