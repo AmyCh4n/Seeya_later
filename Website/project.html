@@ -47,12 +47,15 @@
           <label for="Clusters">Health Geodemographic Clusters</label>
         </div>
       </div>
+      <!-- Section that tells you the MSOA name when hovering over-->
       <div id="msoa_name">
-        <strong> MSOA name:</strong>
+        <strong>MSOA:</strong>
       </div>
     </div>
     <!-- Box Pop Up depending on radio button-->
     <div class="Deaths box"> You have selected <strong>deaths</strong> so I am here <p>Standardised mortality ratio for deaths from causes considered preventable in persons of all ages</p>
+    <div id="msoa_selected">
+      </div>
     </div>
     <div class="Clusters box"> You have selected <strong>clusters</strong> so I am here </div>
   </div>
@@ -62,8 +65,8 @@
   <body>
 
     <!-- SCRIPTS w-->
-<script type='module' src='./scripts/map.js'></script>
-<script type='module' src='./scripts/pop_up.js'></script>
+    <script type='module' src='./scripts/map.js'></script>
+    <script type='module' src='./scripts/pop_up.js'></script>
 
 
     </html>
