@@ -288,6 +288,21 @@ input[type='radio']:checked ~label {
   color: #F27405;
 }
 
+#msoa_name{
+  position: absolute;
+  top:200px;
+}
+
+.map-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 20px;
+  font-family: Arial, sans-serif;
+  overflow: auto;
+  border-radius: 3px;
+}
 
 #mapbox{
 	position: fixed;
@@ -295,7 +310,7 @@ input[type='radio']:checked ~label {
 	height: 100%;
 	width:65%;
 	right:0;
-	z-index: 0;
+  z-index: 0;
 	outline: none
 }
 

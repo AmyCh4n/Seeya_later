@@ -289,9 +289,8 @@ input[type='radio']:checked ~label {
 }
 
 #msoa_name{
-  position: absolute;
-  top:200px;
-  border:1px solid white;
+  position:relative;
+  top:15px;
 }
 
 .map-overlay {
