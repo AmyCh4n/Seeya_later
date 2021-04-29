@@ -345,7 +345,7 @@ input[type='radio']:checked ~label {
 .stxt{
   display: 100%;
   column-count: 2;
-  padding: 5px 5px 30px 5px;
+  padding: 50px 5px 30px 5px;
 }
 
 .stxtr{
@@ -357,41 +357,66 @@ input[type='radio']:checked ~label {
   text-align: center;
   padding: 50px 5px 50px 5px;
   width:100%;
+  padding: 50px 5px 60px 5px;
 }
 
 /*Images*/
-#sdsimgcontainer{
+.sdsimgcontainer{
   display: 100%;
-  column-count: 3;
+  column-count: 2;
   float: center;
 }
 
-#XXXlogoimg{
-  width:150px;
-  height:150px;
+/*MAkes the hover colour orange*/
+/*.sdsimgcontainer figure{
+  background: #F27405;
+  width:220px;
+  height:120px;
+  border-radius: 18%;
+}*/
+
+.sdsimgcontainer figure img{
+  width:220px;
+  height:120px;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 18%;
+  opacity: 1;
+  -webkit-transition:.3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.sdsimgcontainer figure:hover img{
+  /*Makes orange shadow appear*/
+  -moz-box-shadow: 100px 0 30px #ccc;
+  -webkit-box-shadow: 0 0 30px #ccc;
+  box-shadow: 20px 0px 0px #F27405;
+  opacity: .5;
+  transition: .3s;
 }
 
 #sssimgcontainer{
   display: 100%;
   column-count: 2;
   width: auto;
+  padding: 50px 5px 50px 5px;
 }
 
 #msoaimg{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width:150px;
-  height:150px;
+  width:485px;
+  height:555px;
 }
 
 #spdimgcontainer{
   display: 100%;
   column-count: 2;
   width: auto;
+  padding: 50px 5px 50px 5px;
+
 }
 
 #spdimg1{
@@ -406,6 +431,7 @@ input[type='radio']:checked ~label {
   display: 100%;
   column-count: 2;
   width: auto;
+  padding: 50px 5px 50px 5px;
 }
 
 #sseiimg1{
@@ -420,6 +446,7 @@ input[type='radio']:checked ~label {
   display: 100%;
   column-count: 2;
   width: auto;
+  padding: 50px 5px 50px 5px;
 }
 
 #saimg1{
