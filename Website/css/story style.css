@@ -330,7 +330,7 @@ input[type='radio']:checked ~label {
   padding: 5% 4% 0 4%;
 }
 
-#title{
+#stitle{
   text-align:center;
   padding: 70px 5px 50px 5px;
   width:100%;
