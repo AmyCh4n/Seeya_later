@@ -139,16 +139,17 @@ map.on('load', function() {
     var msoa_hover = map.queryRenderedFeatures(e.point, {
       layers: ['msoa']
     });
-    if (clickedMSOAname === null || clickedMSOAname.length === 0 && msoa_hover.length > 0) {
+    if ((clickedMSOAname === null || clickedMSOAname.length === 0) && msoa_hover.length > 0) {
       document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + msoa_hover[0].properties.msoa11hclnm + '';
     } else if (clickedMSOAname.length > 0) {
       document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + ''
     } else {
-      document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>'
+      document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
     }
+    $('#msoa_name').quickfit();
   });
 
-  // Display name of clicked MSOAID
+  // Display name of clicked MSOA
   map.on('click', function(e) {
     clickedMSOAname = map.queryRenderedFeatures(e.point, {
       layers: ['msoa']
@@ -157,7 +158,7 @@ map.on('load', function() {
     if (clickedMSOAname.length > 0) {
       document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + '';
     } else {
-      document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>';
+      document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>';
     }
     console.log(clickedMSOAname.length);
   });
