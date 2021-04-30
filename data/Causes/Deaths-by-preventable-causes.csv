@@ -57,13 +57,9 @@ Infectious diseases,Tuberculosis,A19,0-74,0.5,0.5
 Infectious diseases,Tuberculosis,B90,0-74,0.5,0.5
 Infectious diseases,Tuberculosis,J65,0-74,0.5,0.5
 Infectious diseases,Scarlet fever,A38,0-74,1,0
-Infectious diseases,Sepsis,A40,0-74,1,0
-Infectious diseases,Sepsis,A41,0-74,1,0
 Infectious diseases,Cellulitis,A46,0-74,1,0
 Infectious diseases,Cellulitis,L03,0-74,1,0
 Infectious diseases,Legionnaires disease,A48,0-74,1,0
-Infectious diseases,Streptococcal and enterococci infection,A49,0-74,1,0
-Infectious diseases,Other meningitis,G00,0-74,1,0
 Infectious diseases,Meningitis due to other and unspecified causes*,G03,0-74,1,0
 Neoplasms,Oesophageal cancer,C15,0-74,0,1
 Neoplasms,Stomach cancer,C16,0-74,0,1
@@ -843,7 +839,6 @@ Injuries,Assault,Y07,0-74,0,1
 Injuries,Assault,Y08,0-74,0,1
 Injuries,Assault,Y09,0-74,0,1
 Injuries,Assault,U50,0-74,0,1
-Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisonings,E24,0-74,0,1
 Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisonings,F10,0-74,0,1
 Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisonings,G31,0-74,0,1
 Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisonings,G62,0-74,0,1
@@ -851,8 +846,6 @@ Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisoning
 Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisonings,I42,0-74,0,1
 Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisonings,K29,0-74,0,1
 Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisonings,K70,0-74,0,1
-Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisonings,K85,0-74,0,1
-Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisonings,K86,0-74,0,1
 Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisonings,Q86,0-74,0,1
 Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisonings,R78,0-74,0,1
 Alcohol-related and drug-related deaths,Alcohol-specific disorders and poisonings,X45,0-74,0,1
