@@ -1,0 +1,652 @@
+
+/*------------------------Home Page-------------------------------*/
+
+html, body, #fullheight {
+    min-height: 100% !important;
+    height: 100%;}
+
+body{
+	font-family: 'Poppins', sans-serif;
+	text-align: justify;
+	background-color: #557AB5;
+}
+
+/*navigation*/
+*{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+nav{
+  background: #35478C;
+  height: 80px;
+  width: 100%;
+  position:fixed;
+	z-index:1;
+}
+label.logo{
+  color: white;
+  font-size: 35px;
+  line-height: 80px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+nav ul{
+  float: right;
+  margin-right: 20px;
+}
+nav ul li{
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+nav ul li a{
+  color: white;
+  font-size: 18px;
+  padding: 7px 14px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+a.active {
+  background: #F27405;
+  transition: .5s;
+}
+
+a:hover{
+  color: #F27405;
+  transition: .5s;
+}
+
+.checkbtn{
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+#check{
+  display: none;
+}
+@media (max-width: 952px){
+  label.logo{
+    font-size: 30px;
+    padding-left: 50px;
+  }
+  nav ul li a{
+    font-size: 16px;
+  }
+}
+@media (max-width: 858px){
+  .checkbtn{
+    display: block;
+  }
+  ul{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #35478C;
+    top: 80px;
+    left: -100%;
+    text-align: center;
+    transition: all .5s;
+  }
+  nav ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li a{
+    font-size: 20px;
+  }
+
+  #check:checked ~ ul{
+    left: 0;
+  }
+}
+/* Animated Cardiogram EKG*/
+
+.intro-block svg .ekg {
+	fill: none;
+	position: fixed;
+	stroke: #ffffff;
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-linejoin: miter;
+	opacity: 0;
+	stroke-dashoffset: 1000;
+	stroke-dasharray: 1000;
+	animation: ekg 4s linear forwards infinite;
+}
+.intro-block {
+	padding-top: 40px;
+}
+
+@keyframes ekg {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+      stroke-dashoffset: 2000;
+    }
+    99% {
+      opacity: 0;
+      stroke-dashoffset: 3000;
+    }
+    100% {
+      stroke-dashoffset: 1000;
+    }
+}
+/*text under EKG*/
+#text{
+	text-align: center;
+	color: white;
+	font-size: 25px;
+	line-height: 4;
+}
+
+/*general features*/
+.description{
+	color:white;
+}
+
+.featurescontainer{
+  text-align: justify;
+  padding: 5% 4% 0 4%;
+  width: 100%;
+}
+
+.feature1container, .feature2container, .feature3container{
+  margin-bottom: 5%;
+}
+
+.feature1, .feature3 {
+  width: 100%;
+  /* margin-left: 5%; */
+  /* position: absolute; */
+}
+
+.textBox {
+  width: 60%;
+}
+
+/*feature 1*/
+
+#feature1img {
+  width: 70%;
+  height: 80%;
+}
+
+#img1container {
+  width: 45%;
+  text-align: right;
+}
+
+.feature1 {
+  display: flex;
+  justify-content: start;
+  top:20%;
+}
+
+.featureone {
+	text-align: center;
+	line-height: 2;
+	color:#F27405;
+}
+
+/*feature 2*/
+
+.feature2container{
+  display: flex;
+  top: 20%;
+}
+
+.img2container {
+  text-align: right;
+  width: 40%;
+  height: 250px;
+  margin-right: 3%;
+}
+
+#feature2img {
+  width: 200px;
+  height: 200px;
+}
+
+.feature2 {
+  /* position: absolute; */
+  top: 60%;
+  width: 100%;
+  margin-right:5%;
+}
+
+#featuretwo {
+  text-align: center;
+  line-height: 2;
+  color:#F27405;
+}
+
+/*feature 3*/
+
+.feature3container{
+  display: flex;
+}
+
+#img3container {
+  width: 25%;
+  text-align: right;
+}
+
+#feature3img {
+	width: 210px;
+	height: 210px;
+}
+
+.feature3 {
+  display: flex;
+  justify-content: start;
+  top: 20%;
+}
+
+.featurethr {
+	text-align: center;
+	line-height: 2;
+	color:#F27405;
+}
+
+/* --------------------------------- ABOUT US PAGE ---------------------------------------------------------*/
+
+#aboutpage {
+  width: 100%;
+  height: 100%;
+  background-color: #557AB5;
+}
+
+.aboutcontainer {
+  text-align: justify;
+  padding: 5% 4% 0 4%;
+  width: 100%;
+}
+
+.aboutprojectcontainer, .aboutmethodologycontainer, .aboutuscontainer {
+  margin-bottom: 5%;
+}
+
+.healthcitycontainer {
+  bottom: 0%;
+  padding: 0 0 0 0;
+  width: 100%;
+}
+
+#healthcity {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.aboutmethodologycontainer {
+  display: flex;
+  justify-content: start;
+  top: 20%;
+}
+
+.aboutuscontainer {
+  display: flex;
+  justify-content: start;
+}
+
+
+.aboutuspicturescontainer {
+  padding-left: 0.5%;
+  width: 55%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.aboutmethodologygif {
+  text-align: center;
+  width: 60%;
+  height: 250px;
+  /* margin-left: 55%; */
+}
+
+#aboutmethodologygif{
+  width: 250px;
+  height: 250px;
+}
+
+#aboutinjectioncontainer {
+  width: 40%;
+  text-align: center;
+}
+
+#aboutinjection {
+  width: 250px;
+  height: 250px;
+}
+
+.aboutproject {
+  display: flex;
+  justify-content: start;
+  top: 20%;
+  margin-top: 5%;
+}
+
+.aboutproject, .aboutus {
+  width: 100%;
+  /* margin-left: 5%; */
+  /* position: absolute; */
+}
+
+.aboutus {
+  top: 120%;
+}
+
+/* paragraph text */
+.aboutpage {
+  color: #ffffff;
+}
+
+#aboutustext {
+  width: 45%
+}
+
+.aboutnames {
+  text-align: center;
+  font-size: 14px;
+  margin-block-start: 0;
+}
+
+#aboutprojecttitle {
+  text-align: left;
+  width: 300px;
+  top: 0px;
+  color: #f27405;
+}
+
+#aboutustitle {
+	color: #F27405;
+}
+
+#contactus {
+	margin-top: 12%;
+}
+
+.aboutmethodologyarea {
+  width: 60%;
+}
+
+#aboutmethodologytitle {
+  text-align: right;
+  color: #f27405;
+}
+
+#aboutustext {
+	margin-top: 1%;
+}
+
+#aboutmethodologytext {
+	margin-top: 2%;
+}
+
+#aboutprojecttext {
+	margin-top: 2%;
+}
+
+.aboutuspicturescontainer {
+  padding-top: 1%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#eleni, #signe, #amy, #yasmine, #emmanuel {
+  height: 130px;
+  width: 130px;
+}
+
+
+#aboutemail {
+  width: 65px;
+  height: 65px;
+}
+
+.aboutcontactcontainer {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+  width: 23%;
+  margin-top: 5%;
+}
+
+
+#aboutpage a:hover img {
+  opacity: 0.6;
+  background-color: none;
+}
+
+#aboutpage a:hover p {
+  color: #f27405;
+}
+
+/*----------------------------------Visualisation page----------------------------------------*/
+/*html {
+  position: relative;
+  min-height: 100%;
+}*/
+#side_panel{
+  position:absolute;
+  top:80px;
+  bottom:0px;
+  width: 35%;
+	padding-left:20px;
+	padding-top: 20px;
+	float:left;
+	color:white;
+	text-align:left;
+}
+
+#header3{
+	line-height: 2;
+	color:#F27405;
+}
+
+input[type='radio']:checked ~label {
+		  color:  #F27405;
+		}
+
+#radio div label:hover {
+  color: #F27405;
+}
+
+#radio div label:checked {
+  color: #F27405;
+}
+
+#msoa_name{
+  position:relative;
+  top:15px;
+}
+
+.map-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 20px;
+  font-family: Arial, sans-serif;
+  overflow: auto;
+  border-radius: 3px;
+}
+
+#mapbox{
+	position: absolute;
+  top:80px;
+  bottom:0px;
+	width:65%;
+	right:0;
+  z-index: 0;
+}
+
+.box{
+        color: #fff;
+				text-align: left;
+				display: none;
+        margin-top: 20px;
+				padding-top: 20px;
+    }
+
+.Deaths{}
+.Clusters{}
+
+/*----------------------------------Story page----------------------------------------*/
+.storycontainer{
+  color:white;
+  padding: 5% 4% 0 4%;
+}
+
+#stitle{
+  text-align:center;
+  padding: 70px 5px 50px 5px;
+  width:100%;
+}
+
+.shtxt{
+  text-align:left;
+  padding: 50px 5px 30px 5px;
+  width:100%;
+}
+
+.stxt{
+  display: 100%;
+  column-count: 2;
+  padding: 50px 5px 30px 5px;
+}
+
+.stxtr{
+  width:100%;
+  padding: 5px 5px 5px 5px;
+}
+
+#scentaltxt{
+  text-align: center;
+  padding: 50px 5px 50px 5px;
+  width:100%;
+  padding: 50px 5px 60px 5px;
+}
+
+/*Images*/
+.sdsimgcontainer{
+  display: 100%;
+  column-count: 2;
+  float: center;
+}
+
+/*MAkes the hover colour orange*/
+/*.sdsimgcontainer figure{
+  background: #F27405;
+  width:220px;
+  height:120px;
+  border-radius: 18%;
+}*/
+
+.sdsimgcontainer figure img{
+  width:220px;
+  height:120px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 18%;
+  opacity: 1;
+  -webkit-transition:.3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.sdsimgcontainer figure:hover img{
+  /*Makes orange shadow appear*/
+  -moz-box-shadow: 100px 0 30px #ccc;
+  -webkit-box-shadow: 0 0 30px #ccc;
+  box-shadow: 20px 0px 0px #F27405;
+  opacity: .5;
+  transition: .3s;
+}
+
+#sssimgcontainer{
+  display: 100%;
+  column-count: 2;
+  width: auto;
+  padding: 50px 5px 50px 5px;
+}
+
+#msoaimg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:485px;
+  height:555px;
+}
+
+#spdimgcontainer{
+  display: 100%;
+  column-count: 2;
+  width: auto;
+  padding: 50px 5px 50px 5px;
+
+}
+
+#spdimg1{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:150px;
+  height:150px;
+}
+
+#sseiimgcontainer{
+  display: 100%;
+  column-count: 2;
+  width: auto;
+  padding: 50px 5px 50px 5px;
+}
+
+#sseiimg1{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:150px;
+  height:150px;
+}
+
+#saimgcontainer{
+  display: 100%;
+  column-count: 2;
+  width: auto;
+  padding: 50px 5px 50px 5px;
+}
+
+#saimg1{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:150px;
+  height:150px;
+}
+
+/*----------------------------------Footer----------------------------------------*/
+footer{
+  text-align: center;
+  padding: 40px;
+  background-color: #35478C;
+  color: white;
+}
+
+footer a:hover img {
+	color: white;
+}
