@@ -50,10 +50,17 @@ nav ul li a{
   border-radius: 5px;
   text-transform: uppercase;
 }
-a.active,a:hover{
+
+a.active {
   background: #F27405;
   transition: .5s;
 }
+
+a:hover{
+  color: #F27405;
+  transition: .5s;
+}
+
 .checkbtn{
   font-size: 30px;
   color: white;
@@ -97,10 +104,7 @@ a.active,a:hover{
   nav ul li a{
     font-size: 20px;
   }
-  a:hover,a.active{
-    background: none;
-    color: #0082e6;
-  }
+
   #check:checked ~ ul{
     left: 0;
   }
@@ -118,6 +122,9 @@ a.active,a:hover{
 	stroke-dashoffset: 1000;
 	stroke-dasharray: 1000;
 	animation: ekg 4s linear forwards infinite;
+}
+.intro-block {
+	padding-top: 40px;
 }
 
 @keyframes ekg {
@@ -199,7 +206,6 @@ a.active,a:hover{
 
 .feature2container{
   display: flex;
-  justify-content: start;
   top: 20%;
 }
 
@@ -207,7 +213,7 @@ a.active,a:hover{
   text-align: right;
   width: 40%;
   height: 250px;
-  margin-right: 60%;
+  margin-right: 3%;
 }
 
 #feature2img {
@@ -232,11 +238,10 @@ a.active,a:hover{
 
 .feature3container{
   display: flex;
-  justify-content: end;
 }
 
 #img3container {
-  width: 45%;
+  width: 25%;
   text-align: right;
 }
 
@@ -640,4 +645,8 @@ footer{
   padding: 40px;
   background-color: #35478C;
   color: white;
+}
+
+footer a:hover img {
+	color: white;
 }
