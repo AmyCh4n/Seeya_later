@@ -11,7 +11,7 @@ var hoveredStateId = null;
 //Adding a selected MSOA id
 var clickedMSOAId = null;
 //Adding a selcted MSOA msoa_name
-var clickedMSOAname = null;
+var clickedMSOAname = "";
 // Add zoom controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 // Add a search bar to the map
@@ -96,75 +96,11 @@ map.on('load', function() {
     }
   });
 
-  //Change colour on hover
-  map.on('mousemove', 'msoa', function(e) {
-    map.getCanvas().style.cursor = 'pointer';
-    if (e.features.length > 0) {
-      if (hoveredStateId !== null) {
-        map.setFeatureState({
-          source: 'MSOAs',
-          id: hoveredStateId
-        }, {
-          hover: false
-        });
-      }
-      hoveredStateId = e.features[0].id;
-      map.setFeatureState({
-        source: 'MSOAs',
-        id: hoveredStateId
-      }, {
-        hover: true
-      });
-    }
-  });
+  //---------------------------------------------Interactivity Functions ----------------------------------------------------------------
 
-  // When the mouse leaves the MSOA layer, update the feature state of the
-  // previously hovered feature.
-  map.on('mouseleave', 'msoa', function() {
-    map.getCanvas().style.cursor = '';
-    if (hoveredStateId !== null) {
-      map.setFeatureState({
-        source: 'MSOAs',
-        id: hoveredStateId
-      }, {
-        hover: false
-      });
-    }
-    hoveredStateId = null;
-  });
-
-  // Display the name of the MSOA on website
-
-  map.on('mousemove', function(e) {
-    var msoa_hover = map.queryRenderedFeatures(e.point, {
-      layers: ['msoa']
-    });
-    if ((clickedMSOAname === null || clickedMSOAname.length === 0) && msoa_hover.length > 0) {
-      document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + msoa_hover[0].properties.msoa11hclnm + '';
-    } else if (clickedMSOAname.length > 0) {
-      document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + ''
-    } else {
-      document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
-    }
-    $('#msoa_name').quickfit();
-  });
-
-  // Display name of clicked MSOA
-  map.on('click', function(e) {
-    clickedMSOAname = map.queryRenderedFeatures(e.point, {
-      layers: ['msoa']
-    });
-
-    if (clickedMSOAname.length > 0) {
-      document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + '';
-    } else {
-      document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>';
-    }
-    console.log(clickedMSOAname.length);
-  });
-
-  map.on('click', function(e) {
-    var click = map.queryRenderedFeatures(e.point, {
+  // Set up function that shows clicked msoa
+  function ShowClickedMSOA(a) {
+    var click = map.queryRenderedFeatures(a.point, {
       layers: ['msoa']
     });
 
@@ -189,9 +125,116 @@ map.on('load', function() {
       });
       clickedMSOAId = null;
     }
+  };
+
+  //Set up function that shows name of clicked MSOA
+  function ShowClickedMSOAName(a) {
+    clickedMSOAname = map.queryRenderedFeatures(a.point, {
+      layers: ['msoa']
+    });
+
+    if (clickedMSOAname.length > 0) {
+      document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + '';
+    } else {
+      document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
+    }
+  };
+
+  // Set up function that changes color of msoa on hover
+  function HoverColour(a) {
+    var hover = map.queryRenderedFeatures(a.point, {
+      layers: ['msoa']
+    });
+    if (hover.length > 0) {
+      if (hoveredStateId !== null) {
+        map.setFeatureState({
+          source: 'MSOAs',
+          id: hoveredStateId
+        }, {
+          hover: false
+        });
+      }
+      hoveredStateId = hover[0].id;
+      map.setFeatureState({
+        source: 'MSOAs',
+        id: hoveredStateId
+      }, {
+        hover: true
+      });
+    }
+  };
+
+  //Show/hide close button based on if MSOA is selected or not.
+  function ToggleCLoseButton() {
+    if (clickedMSOAname.length > 0) {
+      console.log("true");
+      document.getElementById('clear_selection').style.display='block';
+    } else {
+     document.getElementById('clear_selection').style.display='none';
+    }
+  };
+
+  //Display name on hover
+  function HoverName(a) {
+    var msoa_hover = map.queryRenderedFeatures(a.point, {
+      layers: ['msoa']
+    });
+    if (msoa_hover.length > 0) {
+      if ((clickedMSOAname === null || clickedMSOAname.length === 0) && msoa_hover.length > 0) {
+        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + msoa_hover[0].properties.msoa11hclnm + '';
+      } else if (clickedMSOAname.length > 0) {
+        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + ''
+      }
+    } else if (msoa_hover.length == 0) {
+      if (clickedMSOAname.length > 0) {
+        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + ''
+      } else {
+        document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
+      }
+    }
+  };
+  //-------------------------------------------Calling interactivity based on mouse events-----------------------------------------------
+
+
+  //hover effects
+  map.on('mousemove', function(e) {
+    map.getCanvas().style.cursor = 'pointer'; //Display as pointer when hovering over map
+    HoverColour(e);
+    HoverName(e);
+    console.log(clickedMSOAname.length);
+    ToggleCLoseButton();
   });
 
+
+  // When the mouse leaves the MSOA layer, update the feature state of the
+  // previously hovered feature. --> Might make this a function too
+  map.on('mouseleave', 'msoa', function() {
+    map.getCanvas().style.cursor = '';
+    if (hoveredStateId !== null) {
+      map.setFeatureState({
+        source: 'MSOAs',
+        id: hoveredStateId
+      }, {
+        hover: false
+      });
+    }
+    hoveredStateId = null;
+  });
+
+
+  // Listen for click on map and carry out click functions
+  map.on('click', function(e) {
+    ShowClickedMSOAName(e);
+    ShowClickedMSOA(e);
+  });
+
+
+
 });
+
+
+
+
 
 
 
@@ -200,6 +243,7 @@ function DisplayLayer() {
   $('#Deaths').click(function() {
     if ($(this).is(':checked')) {
       // Hide the clusters layer (if it's not already hidden)
+
       // Show the deaths layer
       map.setLayoutProperty('msoa', 'visibility', 'visible');
       map.setLayoutProperty('msoa-borders', 'visibility', 'visible');
