@@ -12,6 +12,7 @@ var hoveredStateId = null;
 var clickedMSOAId = null;
 //Adding a selcted MSOA msoa_name
 var clickedMSOAname = "";
+var click = "";
 // Add zoom controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 // Add a search bar to the map
@@ -26,6 +27,53 @@ map.addControl(
 // Read in MSOA data and check that it worked
 const msoas = './data/gdf_prevantable_deaths.geojson'
 console.log(msoas);
+
+//Show/hide close button based on if MSOA is selected or not.
+function ToggleCLoseButton() {
+  if (click.length > 0) {
+    console.log("true");
+    document.getElementById('clear_selection').style.display = 'block';
+  } else {
+    document.getElementById('clear_selection').style.display = 'none';
+  }
+};
+
+// Set up function that shows clicked msoa
+function ShowClickedMSOA() {
+
+  if (click.length > 0) {
+    map.removeFeatureState({
+      source: "MSOAs",
+      id: clickedMSOAId
+    });
+    clickedMSOAId = click[0].id;
+    map.setFeatureState({
+      source: 'MSOAs',
+      id: clickedMSOAId,
+    }, {
+      clicked: true
+    });
+  } else {
+    map.setFeatureState({
+      source: 'MSOAs',
+      id: clickedMSOAId,
+    }, {
+      clicked: false
+    });
+    clickedMSOAId = null;
+  }
+};
+
+//Set up function that shows name of clicked MSOA
+function ShowClickedMSOAName() {
+  if (click.length > 0) {
+    document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click[0].properties.msoa11hclnm + '';
+  } else {
+    document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
+  }
+};
+
+
 
 // When map loads...
 map.on('load', function() {
@@ -98,47 +146,8 @@ map.on('load', function() {
 
   //---------------------------------------------Interactivity Functions ----------------------------------------------------------------
 
-  // Set up function that shows clicked msoa
-  function ShowClickedMSOA(a) {
-    var click = map.queryRenderedFeatures(a.point, {
-      layers: ['msoa']
-    });
 
-    if (click.length > 0) {
-      map.removeFeatureState({
-        source: "MSOAs",
-        id: clickedMSOAId
-      });
-      clickedMSOAId = click[0].id;
-      map.setFeatureState({
-        source: 'MSOAs',
-        id: clickedMSOAId,
-      }, {
-        clicked: true
-      });
-    } else {
-      map.setFeatureState({
-        source: 'MSOAs',
-        id: clickedMSOAId,
-      }, {
-        clicked: false
-      });
-      clickedMSOAId = null;
-    }
-  };
 
-  //Set up function that shows name of clicked MSOA
-  function ShowClickedMSOAName(a) {
-    clickedMSOAname = map.queryRenderedFeatures(a.point, {
-      layers: ['msoa']
-    });
-
-    if (clickedMSOAname.length > 0) {
-      document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + '';
-    } else {
-      document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
-    }
-  };
 
   // Set up function that changes color of msoa on hover
   function HoverColour(a) {
@@ -164,15 +173,6 @@ map.on('load', function() {
     }
   };
 
-  //Show/hide close button based on if MSOA is selected or not.
-  function ToggleCLoseButton() {
-    if (clickedMSOAname.length > 0) {
-      console.log("true");
-      document.getElementById('clear_selection').style.display='block';
-    } else {
-     document.getElementById('clear_selection').style.display='none';
-    }
-  };
 
   //Display name on hover
   function HoverName(a) {
@@ -180,14 +180,14 @@ map.on('load', function() {
       layers: ['msoa']
     });
     if (msoa_hover.length > 0) {
-      if ((clickedMSOAname === null || clickedMSOAname.length === 0) && msoa_hover.length > 0) {
+      if ((click === null || click.length === 0) && msoa_hover.length > 0) {
         document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + msoa_hover[0].properties.msoa11hclnm + '';
-      } else if (clickedMSOAname.length > 0) {
-        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + ''
+      } else if (click.length > 0) {
+        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click[0].properties.msoa11hclnm + ''
       }
     } else if (msoa_hover.length == 0) {
-      if (clickedMSOAname.length > 0) {
-        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + ''
+      if (click.length > 0) {
+        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click[0].properties.msoa11hclnm + ''
       } else {
         document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
       }
@@ -195,14 +195,23 @@ map.on('load', function() {
   };
   //-------------------------------------------Calling interactivity based on mouse events-----------------------------------------------
 
+  // Listen for click on map and carry out click functions
+  map.on('click', function(e) {
+    click = map.queryRenderedFeatures(e.point, {
+      layers: ['msoa']
+    });
+    ShowClickedMSOAName();
+    ShowClickedMSOA(e);
+    ToggleCLoseButton();
+  });
+
+
 
   //hover effects
   map.on('mousemove', function(e) {
     map.getCanvas().style.cursor = 'pointer'; //Display as pointer when hovering over map
     HoverColour(e);
     HoverName(e);
-    console.log(clickedMSOAname.length);
-    ToggleCLoseButton();
   });
 
 
@@ -222,19 +231,10 @@ map.on('load', function() {
   });
 
 
-  // Listen for click on map and carry out click functions
-  map.on('click', function(e) {
-    ShowClickedMSOAName(e);
-    ShowClickedMSOA(e);
-  });
 
 
 
 });
-
-
-
-
 
 
 
@@ -261,3 +261,19 @@ function DisplayLayer() {
   });
 };
 DisplayLayer();
+
+//Set MSOA name to empty if clear_selection button is clicked
+function clear_selection() {
+      console.log('click!')
+      clickedMSOAname = ""; //Set the var to empty
+      click = "";
+};
+
+function close_button() {
+  clear_selection();
+  ToggleCLoseButton();
+  ShowClickedMSOA();
+  ShowClickedMSOAName();
+};
+
+document.getElementById("clear_selection").addEventListener("click", close_button);

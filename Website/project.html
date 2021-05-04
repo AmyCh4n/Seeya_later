@@ -13,6 +13,7 @@
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
 
+
 </head>
 
 <body>
@@ -48,11 +49,13 @@
         </div>
       </div>
       <!-- Section that tells you the MSOA name when hovering over-->
+      <div id="msoa_display">
       <div id="msoa_name">
         <strong>Select an area</strong>
-        <div id="clear_selection">
-          &#10006;
-        </div>
+      </div>
+      <div id="clear_selection">
+        &#10006;
+      </div>
       </div>
     </div>
     <!-- Box Pop Up depending on radio button-->
@@ -63,13 +66,24 @@
     <div class="Clusters box"> You have selected <strong>clusters</strong> so I am here </div>
   </div>
   <div id="mapbox">
+    <div class='map-overlay' id='legend'>
+      <h4>Standardised mortality ratio for deaths from causes considered preventable in persons of all ages (2013-2017)*</h4>
+      <div><span style="background-color: #F20505"></span>> 132</div>
+      <div><span style="background-color: #F24405"></span>105-132</div>
+      <div><span style="background-color: #F27405"></span>86-105</div>
+      <div><span style="background-color: #F29F05"></span>72-86</div>
+      <div><span style="background-color: #F6DE7F"></span>26-72</div>
+      <i>*100 = expected deaths</i>
+    </div>
   </div>
 
-  <body>
+</body>
 
-    <!-- SCRIPTS w-->
-    <script type='module' src='./scripts/map.js'></script>
-    <script type='module' src='./scripts/pop_up.js'></script>
+<!-- SCRIPTS w-->
+<script type='module' src='./scripts/map.js'></script>
+<script type='module' src='./scripts/pop_up.js'></script>
+
+
 
 
     </html>

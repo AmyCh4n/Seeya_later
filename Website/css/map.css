@@ -263,7 +263,7 @@ a.active,a:hover{
   position:absolute;
   top:80px;
   bottom:0px;
-  width: 35%;
+  width: 40%;
 	padding-left:20px;
 	padding-top: 20px;
   padding-right: 20px;
@@ -283,40 +283,37 @@ input[type='radio']:checked ~label {
 
 #radio div label:hover {
   color: #F27405;
+  cursor: pointer;
 }
 
 #radio div label:checked {
   color: #F27405;
 }
 
-#msoa_name{
+#msoa_display{
   border: 2px solid white;
   padding-right:15px;
   padding-left: 15px;
   position:relative;
   top:15px;
-  display:none;
+  height: auto;
+  overflow: auto;
   border-radius: 10px;
+  display: none;
+  }
+
+#msoa_name{
+  height:100%;
+  float:left;
 }
 
-.map-overlay {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.8);
-  margin-right: 20px;
-  font-family: Arial, sans-serif;
-  overflow: auto;
-  border-radius: 3px;
-}
 
 #mapbox{
 	position: absolute;
   top:80px;
   bottom:0px;
-	width:65%;
+	width:60%;
 	right:0;
-  z-index: 0;
 }
 
 .box{
@@ -330,12 +327,50 @@ input[type='radio']:checked ~label {
 .Deaths{}
 .Clusters{}
 
-#clear{
+#clear_selection{
   width:50%
   height:100%;
   float:right;
+  display: none;
 }
 
-#clear:hover{
-  color:#F27405
+#clear_selection:hover{
+  color:#F27405;
+  cursor: pointer;
+
+}
+
+.map-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 20px;
+  overflow: auto;
+  border-radius: 3px;
+  z-index: 100;
+}
+
+#legend {
+  padding: 10px;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 18px;
+  height: 225px;
+  margin-bottom: 40px;
+  width: 200px;
+  display: none;
+  border: 2px solid;
+  border-color: #557AB5;
+  color: #35478C;
+}
+
+
+#legend div span {
+border-radius: 50%;
+display: inline-block;
+height: 10px;
+margin-right: 5px;
+width: 10px;
 }
