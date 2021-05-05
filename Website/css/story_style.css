@@ -428,6 +428,7 @@ input[type='radio']:checked ~label {
 }
 
 /*Containers*/
+/*Data Sources*/
 .sdsimgcontainer{
   display: 100%;
   column-count: 2;
@@ -455,6 +456,7 @@ input[type='radio']:checked ~label {
   transition: .3s;
 }
 
+/*Spatial Scale*/
 #sssimgcontainer{
   display: 100%;
   column-count: 2;
@@ -470,6 +472,7 @@ input[type='radio']:checked ~label {
   height:555px;
 }
 
+/*Preventable Deaths*/
 #spdimgcontainer{
   display: 100%;
   column-count: 2;
@@ -478,14 +481,7 @@ input[type='radio']:checked ~label {
 
 }
 
-#spdimg1{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width:150px;
-  height:150px;
-}
-
+/*Socioeconomic Indicators*/
 #sseiimgcontainer{
   display: 100%;
   column-count: 2;
@@ -493,27 +489,12 @@ input[type='radio']:checked ~label {
   padding: 50px 5px 50px 5px;
 }
 
-#sseiimg1{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width:150px;
-  height:150px;
-}
-
+/*Analysis*/
 #saimgcontainer{
   display: 100%;
   column-count: 2;
   width: auto;
   padding: 50px 5px 50px 5px;
-}
-
-#saimg1{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width:150px;
-  height:150px;
 }
 
 /*----------------------------------Footer----------------------------------------*/

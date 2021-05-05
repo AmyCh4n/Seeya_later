@@ -33,12 +33,17 @@ for(i=0; i<coll.length; i++){
 }*/
 
 /*Preventable Deaths*/
-google.charts.load('current', {packages:['corechart','bar']});
-google.charts.setOnLoadCallback(drawBasic);
-
-function drawBasic(){
-  var data = new google.
-}
+var chart = new Chart('spdChart', {
+  type: 'horizontalBar',
+  data: {
+    labels: ['A', 'B', 'C'],
+    datasets: [
+      {
+        data: [10, 20, 30]
+      }
+    ]
+  }
+});
 
 /*Socioeconomic Indicators*/
 /*Age*/
