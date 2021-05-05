@@ -270,6 +270,7 @@ a.active,a:hover{
 	float:left;
 	color:white;
 	text-align:left;
+  overflow: auto;
 }
 
 #header3{
@@ -298,6 +299,7 @@ input[type='radio']:checked ~label {
   top:15px;
   height: auto;
   overflow: auto;
+  white-space: nowrap;
   border-radius: 10px;
   display: none;
   }
@@ -320,11 +322,13 @@ input[type='radio']:checked ~label {
         color: #fff;
 				text-align: left;
 				display: none;
-        margin-top: 20px;
+        margin-top: 45px;
 				padding-top: 20px;
+
     }
 
-.Deaths{}
+.Deaths{border:1px solid white;
+        height:300px;}
 .Clusters{}
 
 #clear_selection{

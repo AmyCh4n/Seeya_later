@@ -6,7 +6,6 @@ $('input[type="radio"]').click(function() {
     var targetBox = $("." + inputValue);
     $(targetBox).show();
     $("#msoa_display").show();
-    $('#legend').show();
     $(".box").not(targetBox).hide();
   }
 });

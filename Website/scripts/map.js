@@ -247,6 +247,7 @@ function DisplayLayer() {
       // Show the deaths layer
       map.setLayoutProperty('msoa', 'visibility', 'visible');
       map.setLayoutProperty('msoa-borders', 'visibility', 'visible');
+      $('#legend').show();//Shows the legend
     } else {
       map.setLayoutProperty('msoas', 'visibility', 'none');
     }
@@ -256,6 +257,7 @@ function DisplayLayer() {
       //Hide deaths layer
       map.setLayoutProperty('msoa', 'visibility', 'none');
       map.setLayoutProperty('msoa-borders', 'visibility', 'none')
+      $('#legend').hide();
       //Show the culsters layer
     }
   });
