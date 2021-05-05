@@ -5,9 +5,13 @@
 	<meta name='author' content='Amy Chan'/>
     <link rel="stylesheet" href="./css/story_style.css"/>
    		<link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet" type="text/css">
-      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-      <script src="scripts/story.js"></script>
+      <link rel="preconnect" href="https://fonts.gstatic.com">
       <script src="https://www.gstatic.com/charts/loader.js"></script>
+      <script src="https://d3js.org/d3.v6.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
+      <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+      <script src="./data/deaths.json"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 
 <body>
@@ -26,9 +30,9 @@
     </ul>
   </nav>
 
-<!-- The story page will be mainly divided into two columns, "scone" and "sctwo"-->
+<!-- Story Container -->
   <div class="storycontainer">
-<!--Title-->
+<!-- Story Title -->
     <div id="stitle">
       <h1>HEALTH INEQUALITIES IN THE UK</h1>
     </div>
@@ -81,7 +85,6 @@
           down of preventable deaths per ratio of population.
         </p>
       </div>
-
     </div>
 
 <!-- PREVENTABLE DEATHS -->
@@ -90,8 +93,7 @@
     </div>
 
     <div id="spdimgcontainer">
-<!--Add Histogram-->
-      <canvas id="spdChart"></canvas>
+      <div id="spdChart"></div>
 
       <div class="stxtr">
         <p>
@@ -128,11 +130,7 @@
     </div>
 
     <div id="saimgcontainer">
-<!--NEED TO UPDATE
- K MEANS RESULTING MAP SHOWING THE COMBINATION OF PREVENTABLE DEATHS AND SOCIO-ECONOMIC INDICATORS
-- K MEANS CLUSTERING MAP
-- INSERT EXPLANATION OF HOW WE CAME ABOUT CHOOSING THE ‘RIGHT’ NUMBER OF CLUSTERS
-- CORRELATION MATRIX AND CHECKING FOR MULTICOLLINEARITY-->
+      <canvas id="analysis"></canvas>
 
       <div class="stxtr">
         <p>
@@ -182,6 +180,9 @@
   </footer>
 
 </body>
+
+<script src="scripts/story.js"></script>
+
 </html>
 
 
