@@ -5,7 +5,9 @@
 	<meta name='author' content='Amy Chan'/>
     <link rel="stylesheet" href="./css/story style.css"/>
    		<link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet" type="text/css">
-		<link rel="preconnect" href="https://fonts.gstatic.com">
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script src="scripts/story.js"></script>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
@@ -88,9 +90,8 @@
     </div>
 
     <div id="spdimgcontainer">
-<!--NEED TO UPDATE ALL IMG BELOW-->
-      <img src="./photos/XXX.png" id="spdimg1" alt="Image of XXX">
-<!-- iNITIAL MAPPING OF THE PREVENTABLE DEATHS-->
+<!--Add Histogram-->
+      <div id="chartDiv" style="width:50%; height:300px; margin:0 auto;"></div>
 
       <div class="stxtr">
         <p>
@@ -98,7 +99,6 @@
           Make some observations about the preventable deaths
         </p>
       </div>
-
     </div>
 
 <!-- SOCIO-ECONOMIC INDICATORS -->
@@ -107,9 +107,9 @@
     </div>
 
     <div id="sseiimgcontainer">
-<!--NEED TO UPDATE ALL IMG BELOW-->
-      <img src="./photos/XXX.png" id="sseiimg1" alt="Image of XXX">
-<!-- iNITIAL MAPPING OF THE SOCIO-ECONOMIC INDICATORS-->
+      <!--Add Histogram-age-->
+      <!--Add Histogram-imd-->
+      <!--Add stacked column-ethnicity-->
 
       <div class="stxtr">
         <p>
@@ -125,9 +125,8 @@
     </div>
 
     <div id="saimgcontainer">
-<!--NEED TO UPDATE ALL IMG BELOW-->
-      <img src="./photos/XXX.png" id="saimg1" alt="Image of XXX">
-<!-- K MEANS RESULTING MAP SHOWING THE COMBINATION OF PREVENTABLE DEATHS AND SOCIO-ECONOMIC INDICATORS
+<!--NEED TO UPDATE
+ K MEANS RESULTING MAP SHOWING THE COMBINATION OF PREVENTABLE DEATHS AND SOCIO-ECONOMIC INDICATORS
 - K MEANS CLUSTERING MAP
 - INSERT EXPLANATION OF HOW WE CAME ABOUT CHOOSING THE ‘RIGHT’ NUMBER OF CLUSTERS
 - CORRELATION MATRIX AND CHECKING FOR MULTICOLLINEARITY-->
@@ -181,3 +180,13 @@
 
 </body>
 </html>
+
+
+
+<!--DROP DOWN MENU CONTAINTER
+  <div class="sdropdown">
+    <button onclick="dropdwn()" class="dropbtn">Select</button>
+    <div id="myDropdown" class="dropdown-content">
+COLLAPSIBLE CONTAINERS
+      <button type="button" class="collapsible">Identifying Preventable Causes of Death</button>
+      <div class="content">-->
