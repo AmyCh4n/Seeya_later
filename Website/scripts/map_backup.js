@@ -1,28 +1,17 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiemNmdHNzdyIsImEiOiJja212c24wdW4wNmsxMm9tdG5udzVsMjd4In0.HB4Oh1U4CqgR4psD72awjQ';
-// Set bounds to UK
-var bounds = [
-[-15.996088,45.763929],// Southwest coordinates
-[12.480474,62.012030]// Northeast coordinates
-];
-//-1.434713, 52.622569
-
 var map = new mapboxgl.Map({
   container: 'mapbox', // container id
   style: 'mapbox://styles/zcftssw/cknagpjwh3dm617qxeokn7amw', // style URL
-  center: [-0.840388033475420,52.920856159299575], // starting position [lng, lat]
-  zoom: 5.2, // starting zoom
-  minZoom: 4.5, // min zoom
-  maxBounds: bounds
+  center: [-1.434713, 52.622569], // starting position [lng, lat]
+  zoom: 5.4, // starting zoom
+  minZoom: 4.5 // min zoom
 });
-
-
 //Adding a hoveredStateId
 var hoveredStateId = null;
 //Adding a selected MSOA id
 var clickedMSOAId = null;
 //Adding a selcted MSOA msoa_name
 var clickedMSOAname = "";
-var click = "";
 // Add zoom controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 // Add a search bar to the map
@@ -37,53 +26,6 @@ map.addControl(
 // Read in MSOA data and check that it worked
 const msoas = './data/gdf_prevantable_deaths.geojson'
 console.log(msoas);
-
-//Show/hide close button based on if MSOA is selected or not.
-function ToggleCLoseButton() {
-  if (click.length > 0) {
-    console.log("true");
-    document.getElementById('clear_selection').style.display = 'block';
-  } else {
-    document.getElementById('clear_selection').style.display = 'none';
-  }
-};
-
-// Set up function that shows clicked msoa
-function ShowClickedMSOA() {
-
-  if (click.length > 0) {
-    map.removeFeatureState({
-      source: "MSOAs",
-      id: clickedMSOAId
-    });
-    clickedMSOAId = click[0].id;
-    map.setFeatureState({
-      source: 'MSOAs',
-      id: clickedMSOAId,
-    }, {
-      clicked: true
-    });
-  } else {
-    map.setFeatureState({
-      source: 'MSOAs',
-      id: clickedMSOAId,
-    }, {
-      clicked: false
-    });
-    clickedMSOAId = null;
-  }
-};
-
-//Set up function that shows name of clicked MSOA
-function ShowClickedMSOAName() {
-  if (click.length > 0) {
-    document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click[0].properties.msoa11hclnm + '';
-  } else {
-    document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
-  }
-};
-
-
 
 // When map loads...
 map.on('load', function() {
@@ -156,8 +98,47 @@ map.on('load', function() {
 
   //---------------------------------------------Interactivity Functions ----------------------------------------------------------------
 
+  // Set up function that shows clicked msoa
+  function ShowClickedMSOA(a) {
+    var click = map.queryRenderedFeatures(a.point, {
+      layers: ['msoa']
+    });
 
+    if (click.length > 0) {
+      map.removeFeatureState({
+        source: "MSOAs",
+        id: clickedMSOAId
+      });
+      clickedMSOAId = click[0].id;
+      map.setFeatureState({
+        source: 'MSOAs',
+        id: clickedMSOAId,
+      }, {
+        clicked: true
+      });
+    } else {
+      map.setFeatureState({
+        source: 'MSOAs',
+        id: clickedMSOAId,
+      }, {
+        clicked: false
+      });
+      clickedMSOAId = null;
+    }
+  };
 
+  //Set up function that shows name of clicked MSOA
+  function ShowClickedMSOAName(a) {
+    clickedMSOAname = map.queryRenderedFeatures(a.point, {
+      layers: ['msoa']
+    });
+
+    if (clickedMSOAname.length > 0) {
+      document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + '';
+    } else {
+      document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
+    }
+  };
 
   // Set up function that changes color of msoa on hover
   function HoverColour(a) {
@@ -183,6 +164,15 @@ map.on('load', function() {
     }
   };
 
+  //Show/hide close button based on if MSOA is selected or not.
+  function ToggleCLoseButton() {
+    if (clickedMSOAname.length > 0) {
+      console.log("true");
+      document.getElementById('clear_selection').style.display = 'block';
+    } else {
+      document.getElementById('clear_selection').style.display = 'none';
+    }
+  };
 
   //Display name on hover
   function HoverName(a) {
@@ -190,14 +180,14 @@ map.on('load', function() {
       layers: ['msoa']
     });
     if (msoa_hover.length > 0) {
-      if ((click === null || click.length === 0) && msoa_hover.length > 0) {
+      if ((clickedMSOAname === null || clickedMSOAname.length === 0) && msoa_hover.length > 0) {
         document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + msoa_hover[0].properties.msoa11hclnm + '';
-      } else if (click.length > 0) {
-        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click[0].properties.msoa11hclnm + ''
+      } else if (clickedMSOAname.length > 0) {
+        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + ''
       }
     } else if (msoa_hover.length == 0) {
-      if (click.length > 0) {
-        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click[0].properties.msoa11hclnm + ''
+      if (clickedMSOAname.length > 0) {
+        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + clickedMSOAname[0].properties.msoa11hclnm + ''
       } else {
         document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
       }
@@ -207,16 +197,10 @@ map.on('load', function() {
 
   // Listen for click on map and carry out click functions
   map.on('click', function(e) {
-    click = map.queryRenderedFeatures(e.point, {
-      layers: ['msoa']
-    });
-    ShowClickedMSOAName();
+    ShowClickedMSOAName(e);
     ShowClickedMSOA(e);
     ToggleCLoseButton();
-    var center = map.getCenter();
-    console.log(center);
   });
-
 
 
   //hover effects
@@ -224,6 +208,7 @@ map.on('load', function() {
     map.getCanvas().style.cursor = 'pointer'; //Display as pointer when hovering over map
     HoverColour(e);
     HoverName(e);
+    console.log(clickedMSOAname.length);
   });
 
 
@@ -249,6 +234,16 @@ map.on('load', function() {
 });
 
 
+//Set MSOA name to empty if clear_selection button is clicked
+function clear_selection() {
+  $(document).ready(function(){
+    $("#clear_selection").click(function(){
+      console.log('click!')
+      clickedMSOAname = ""; //Set the var to empty
+      clickedMSOAId = null;
+    });
+  });
+}
 
 // Change visibility of layer depending on radio button toggle
 function DisplayLayer() {
@@ -259,7 +254,6 @@ function DisplayLayer() {
       // Show the deaths layer
       map.setLayoutProperty('msoa', 'visibility', 'visible');
       map.setLayoutProperty('msoa-borders', 'visibility', 'visible');
-      $('#legend').show();//Shows the legend
     } else {
       map.setLayoutProperty('msoas', 'visibility', 'none');
     }
@@ -269,25 +263,9 @@ function DisplayLayer() {
       //Hide deaths layer
       map.setLayoutProperty('msoa', 'visibility', 'none');
       map.setLayoutProperty('msoa-borders', 'visibility', 'none')
-      $('#legend').hide();
       //Show the culsters layer
     }
   });
 };
 DisplayLayer();
-
-//Set MSOA name to empty if clear_selection button is clicked
-function clear_selection() {
-      console.log('click!')
-      clickedMSOAname = ""; //Set the var to empty
-      click = "";
-};
-
-function close_button() {
-  clear_selection();
-  ToggleCLoseButton();
-  ShowClickedMSOA();
-  ShowClickedMSOAName();
-};
-
-document.getElementById("clear_selection").addEventListener("click", close_button);
+clear_selection();

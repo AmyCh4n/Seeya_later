@@ -12,6 +12,10 @@
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 
 </head>
@@ -59,7 +63,7 @@
       </div>
     </div>
     <!-- Box Pop Up depending on radio button-->
-    <div class="Deaths box"> You have selected <strong>deaths</strong> so I am here <p>Standardised mortality ratio for deaths from causes considered preventable in persons of all ages</p>
+    <div class="Deaths box" id="chart"> You have selected <strong>deaths</strong> so I am here <p>Standardised mortality ratio for deaths from causes considered preventable in persons of all ages</p>
     <div id="msoa_selected">
       </div>
     </div>
@@ -81,6 +85,7 @@
 
 <!-- SCRIPTS w-->
 <script type='module' src='./scripts/map.js'></script>
+<script type='module' src='./scripts/chart.js'></script>
 <script type='module' src='./scripts/pop_up.js'></script>
 
 

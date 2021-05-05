@@ -1,4 +1,6 @@
-/*Home Page*/
+
+/*------------------------Home Page-------------------------------*/
+
 html, body, #fullheight {
     min-height: 100% !important;
     height: 100%;}
@@ -48,10 +50,17 @@ nav ul li a{
   border-radius: 5px;
   text-transform: uppercase;
 }
-a.active,a:hover{
+
+a.active {
   background: #F27405;
   transition: .5s;
 }
+
+a:hover{
+  color: #F27405;
+  transition: .5s;
+}
+
 .checkbtn{
   font-size: 30px;
   color: white;
@@ -95,10 +104,7 @@ a.active,a:hover{
   nav ul li a{
     font-size: 20px;
   }
-  a:hover,a.active{
-    background: none;
-    color: #0082e6;
-  }
+
   #check:checked ~ ul{
     left: 0;
   }
@@ -107,6 +113,7 @@ a.active,a:hover{
 
 .intro-block svg .ekg {
 	fill: none;
+	position: fixed;
 	stroke: #ffffff;
 	stroke-width: 3;
 	stroke-linecap: round;
@@ -115,6 +122,9 @@ a.active,a:hover{
 	stroke-dashoffset: 1000;
 	stroke-dasharray: 1000;
 	animation: ekg 4s linear forwards infinite;
+}
+.intro-block {
+	padding-top: 40px;
 }
 
 @keyframes ekg {
@@ -196,7 +206,6 @@ a.active,a:hover{
 
 .feature2container{
   display: flex;
-  justify-content: start;
   top: 20%;
 }
 
@@ -204,7 +213,7 @@ a.active,a:hover{
   text-align: right;
   width: 40%;
   height: 250px;
-  margin-right: 60%;
+  margin-right: 3%;
 }
 
 #feature2img {
@@ -229,11 +238,10 @@ a.active,a:hover{
 
 .feature3container{
   display: flex;
-  justify-content: end;
 }
 
 #img3container {
-  width: 45%;
+  width: 25%;
   text-align: right;
 }
 
@@ -254,15 +262,189 @@ a.active,a:hover{
 	color:#F27405;
 }
 
+/* --------------------------------- ABOUT US PAGE ---------------------------------------------------------*/
+
+#aboutpage {
+  width: 100%;
+  height: 100%;
+  background-color: #557AB5;
+}
+
+.aboutcontainer {
+  text-align: justify;
+  padding: 5% 4% 0 4%;
+  width: 100%;
+}
+
+.aboutprojectcontainer, .aboutmethodologycontainer, .aboutuscontainer {
+  margin-bottom: 5%;
+}
+
+.healthcitycontainer {
+  bottom: 0%;
+  padding: 0 0 0 0;
+  width: 100%;
+}
+
+#healthcity {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.aboutmethodologycontainer {
+  display: flex;
+  justify-content: start;
+  top: 20%;
+}
+
+.aboutuscontainer {
+  display: flex;
+  justify-content: start;
+}
+
+
+.aboutuspicturescontainer {
+  padding-left: 0.5%;
+  width: 55%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.aboutmethodologygif {
+  text-align: center;
+  width: 60%;
+  height: 250px;
+  /* margin-left: 55%; */
+}
+
+#aboutmethodologygif{
+  width: 250px;
+  height: 250px;
+}
+
+#aboutinjectioncontainer {
+  width: 40%;
+  text-align: center;
+}
+
+#aboutinjection {
+  width: 250px;
+  height: 250px;
+}
+
+.aboutproject {
+  display: flex;
+  justify-content: start;
+  top: 20%;
+  margin-top: 5%;
+}
+
+.aboutproject, .aboutus {
+  width: 100%;
+  /* margin-left: 5%; */
+  /* position: absolute; */
+}
+
+.aboutus {
+  top: 120%;
+}
+
+/* paragraph text */
+.aboutpage {
+  color: #ffffff;
+}
+
+#aboutustext {
+  width: 45%
+}
+
+.aboutnames {
+  text-align: center;
+  font-size: 14px;
+  margin-block-start: 0;
+}
+
+#aboutprojecttitle {
+  text-align: left;
+  width: 300px;
+  top: 0px;
+  color: #f27405;
+}
+
+#aboutustitle {
+	color: #F27405;
+}
+
+#contactus {
+	margin-top: 12%;
+}
+
+.aboutmethodologyarea {
+  width: 60%;
+}
+
+#aboutmethodologytitle {
+  text-align: right;
+  color: #f27405;
+}
+
+#aboutustext {
+	margin-top: 1%;
+}
+
+#aboutmethodologytext {
+	margin-top: 2%;
+}
+
+#aboutprojecttext {
+	margin-top: 2%;
+}
+
+.aboutuspicturescontainer {
+  padding-top: 1%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#eleni, #signe, #amy, #yasmine, #emmanuel {
+  height: 130px;
+  width: 130px;
+}
+
+
+#aboutemail {
+  width: 65px;
+  height: 65px;
+}
+
+.aboutcontactcontainer {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+  width: 23%;
+  margin-top: 5%;
+}
+
+
+#aboutpage a:hover img {
+  opacity: 0.6;
+  background-color: none;
+}
+
+#aboutpage a:hover p {
+  color: #f27405;
+}
+
 /*----------------------------------Visualisation page----------------------------------------*/
 /*html {
   position: relative;
   min-height: 100%;
 }*/
 #side_panel{
-  position:fixed;
+  position:absolute;
   top:80px;
-  height:100%;
+  bottom:0px;
   width: 35%;
 	padding-left:20px;
 	padding-top: 20px;
@@ -289,8 +471,8 @@ input[type='radio']:checked ~label {
 }
 
 #msoa_name{
-  position: absolute;
-  top:200px;
+  position:relative;
+  top:15px;
 }
 
 .map-overlay {
@@ -305,13 +487,12 @@ input[type='radio']:checked ~label {
 }
 
 #mapbox{
-	position: fixed;
-	top:80px;
-	height: 100%;
+	position: absolute;
+  top:80px;
+  bottom:0px;
 	width:65%;
 	right:0;
   z-index: 0;
-	outline: none
 }
 
 .box{
@@ -324,3 +505,148 @@ input[type='radio']:checked ~label {
 
 .Deaths{}
 .Clusters{}
+
+/*----------------------------------Story page----------------------------------------*/
+.storycontainer{
+  color:white;
+  padding: 5% 4% 0 4%;
+}
+
+#stitle{
+  text-align:center;
+  padding: 70px 5px 50px 5px;
+  width:100%;
+}
+
+.shtxt{
+  text-align:left;
+  padding: 50px 5px 30px 5px;
+  width:100%;
+}
+
+.stxt{
+  display: 100%;
+  column-count: 2;
+  padding: 50px 5px 30px 5px;
+}
+
+.stxtr{
+  width:100%;
+  padding: 5px 5px 5px 5px;
+}
+
+#scentaltxt{
+  text-align: center;
+  padding: 50px 5px 50px 5px;
+  width:100%;
+  padding: 50px 5px 60px 5px;
+}
+
+/*Images*/
+.sdsimgcontainer{
+  display: 100%;
+  column-count: 2;
+  float: center;
+}
+
+/*MAkes the hover colour orange*/
+/*.sdsimgcontainer figure{
+  background: #F27405;
+  width:220px;
+  height:120px;
+  border-radius: 18%;
+}*/
+
+.sdsimgcontainer figure img{
+  width:220px;
+  height:120px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 18%;
+  opacity: 1;
+  -webkit-transition:.3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.sdsimgcontainer figure:hover img{
+  /*Makes orange shadow appear*/
+  -moz-box-shadow: 100px 0 30px #ccc;
+  -webkit-box-shadow: 0 0 30px #ccc;
+  box-shadow: 20px 0px 0px #F27405;
+  opacity: .5;
+  transition: .3s;
+}
+
+#sssimgcontainer{
+  display: 100%;
+  column-count: 2;
+  width: auto;
+  padding: 50px 5px 50px 5px;
+}
+
+#msoaimg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:485px;
+  height:555px;
+}
+
+#spdimgcontainer{
+  display: 100%;
+  column-count: 2;
+  width: auto;
+  padding: 50px 5px 50px 5px;
+
+}
+
+#spdimg1{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:150px;
+  height:150px;
+}
+
+#sseiimgcontainer{
+  display: 100%;
+  column-count: 2;
+  width: auto;
+  padding: 50px 5px 50px 5px;
+}
+
+#sseiimg1{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:150px;
+  height:150px;
+}
+
+#saimgcontainer{
+  display: 100%;
+  column-count: 2;
+  width: auto;
+  padding: 50px 5px 50px 5px;
+}
+
+#saimg1{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:150px;
+  height:150px;
+}
+
+/*----------------------------------Footer----------------------------------------*/
+footer{
+  text-align: center;
+  padding: 40px;
+  background-color: #35478C;
+  color: white;
+}
+
+footer a:hover img {
+	color: white;
+}
