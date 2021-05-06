@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function () {
         const chart = Highcharts.chart('chart', {
             chart: {
@@ -10,22 +12,19 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             xAxis: {
               style:{color:'#ffff'},
-                categories: ['iPhone', 'Fujifilm', 'Nikon','Canon'],
+                categories: ['Lung Cancer', 'Ischaemic Heart Disease', 'Chronic Respiratory Illness','Cerebrovascular Disease','Oesophageal Cancer','Accidental Injuries', 'Other'],
                 labels:{style:{color:'#ffff'}}
             },
             yAxis: {
                 title: {
                   style:{color:'#ffff'},
-                    text: 'Photos taken'
+                    text: 'Portion of Recorded Preventable Deaths'
                 },
                 labels:{style:{color:'#ffff'}}
             },
             series: [{
-                name: 'Jane',
-                data: [1, 0, 4,3]
-            }, {
-                name: 'John',
-                data: [5, 7, 3,5]
+                showInLegend: false,
+                data: [1, 0, 4,3,4,5,2,1]
             }]
         });
       });

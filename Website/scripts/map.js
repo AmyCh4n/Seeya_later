@@ -1,15 +1,15 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiemNmdHNzdyIsImEiOiJja212c24wdW4wNmsxMm9tdG5udzVsMjd4In0.HB4Oh1U4CqgR4psD72awjQ';
 // Set bounds to UK
 var bounds = [
-[-15.996088,45.763929],// Southwest coordinates
-[12.480474,62.012030]// Northeast coordinates
+  [-15.996088, 45.763929], // Southwest coordinates
+  [12.480474, 62.012030] // Northeast coordinates
 ];
 //-1.434713, 52.622569
 
 var map = new mapboxgl.Map({
   container: 'mapbox', // container id
   style: 'mapbox://styles/zcftssw/cknagpjwh3dm617qxeokn7amw', // style URL
-  center: [-0.840388033475420,52.920856159299575], // starting position [lng, lat]
+  center: [-0.840388033475420, 52.920856159299575], // starting position [lng, lat]
   zoom: 5.2, // starting zoom
   minZoom: 4.5, // min zoom
   maxBounds: bounds
@@ -22,7 +22,10 @@ var hoveredStateId = null;
 var clickedMSOAId = null;
 //Adding a selcted MSOA msoa_name
 var clickedMSOAname = "";
+var clickedMSOACode = "";
 var click = "";
+
+
 // Add zoom controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 // Add a search bar to the map
@@ -83,6 +86,57 @@ function ShowClickedMSOAName() {
   }
 };
 
+//Function that returns the death data depending on selected MSOA
+function GetDeathData(code) {
+  $.getJSON("http://dev.spatialdatacapture.org:" + 8707 + "/data/MSOACode/" + code, function(data) {
+    //console.log("Proportion of Accidents:"+ data[0].lung_prop);
+    var barchartdata = [data[0].lung_prop, data[0].heart_prop, data[0].respiratory_prop, data[0].cerebrovascular_prop, data[0].oesophageal_prop, data[0].accident_prop, data[0].other_prop];
+    console.log(barchartdata);
+
+    const chart = Highcharts.chart('chart', {
+      chart: {
+        backgroundColor: 'rgba(0,0,0,0)',
+        type: 'bar'
+      },
+      title: {
+        style: {
+          color: '#ffff'
+        },
+        text: 'Causes of Death'
+      },
+      xAxis: {
+        style: {
+          color: '#ffff'
+        },
+        categories: ['Lung Cancer', 'Ischaemic Heart Disease', 'Chronic Respiratory Illness', 'Cerebrovascular Disease', 'Oesophageal Cancer', 'Accidental Injuries', 'Other'],
+        labels: {
+          style: {
+            color: '#ffff'
+          }
+        }
+      },
+      yAxis: {
+        title: {
+          style: {
+            color: '#ffff'
+          },
+          text: 'Portion of Recorded Preventable Deaths'
+        },
+        labels: {
+          style: {
+            color: '#ffff'
+          }
+        }
+      },
+      series: [{
+        showInLegend: false,
+        data: barchartdata
+      }]
+    });
+
+
+  });
+};
 
 
 // When map loads...
@@ -213,8 +267,9 @@ map.on('load', function() {
     ShowClickedMSOAName();
     ShowClickedMSOA(e);
     ToggleCLoseButton();
-    var center = map.getCenter();
-    console.log(center);
+    clickedMSOACode = click[0].properties.MSOA_code;
+    console.log(clickedMSOACode);
+    GetDeathData(clickedMSOACode);
   });
 
 
@@ -259,7 +314,7 @@ function DisplayLayer() {
       // Show the deaths layer
       map.setLayoutProperty('msoa', 'visibility', 'visible');
       map.setLayoutProperty('msoa-borders', 'visibility', 'visible');
-      $('#legend').show();//Shows the legend
+      $('#legend').show(); //Shows the legend
     } else {
       map.setLayoutProperty('msoas', 'visibility', 'none');
     }
@@ -278,9 +333,9 @@ DisplayLayer();
 
 //Set MSOA name to empty if clear_selection button is clicked
 function clear_selection() {
-      console.log('click!')
-      clickedMSOAname = ""; //Set the var to empty
-      click = "";
+  console.log('click!')
+  clickedMSOAname = ""; //Set the var to empty
+  click = "";
 };
 
 function close_button() {
