@@ -475,6 +475,12 @@ input[type='radio']:checked ~label {
   height: auto;
 }
 
+#spdChart{
+  max-width:100%;
+  height:auto;
+  float: center;
+}
+
 /*positionLeft & positionRight*/
 .positionLeft{
   width: 50%;
@@ -494,6 +500,24 @@ input[type='radio']:checked ~label {
   border: 3px solid #fff;
   padding: 20px;
   height: auto;
+}
+
+#sAgeChart{
+  max-width:100%;
+  height:auto;
+  float: center;
+}
+
+#sImdChart{
+  max-width:100%;
+  height:auto;
+  float: center;
+}
+
+#sEthnicityChart{
+  max-width:100%;
+  height:auto;
+  float: center;
 }
 
 /*Analysis*/
