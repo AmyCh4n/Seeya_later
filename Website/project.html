@@ -13,10 +13,10 @@
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
   <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 </head>
 
@@ -27,7 +27,7 @@
     <label for="check" class="checkbtn">
       <i class="fas fa-bars"></i>
     </label>
-    <label class="logo">SEE YA LATER</label>
+    <label class="logo">MARMOT'S MAPPERS</label>
     <ul>
       <li><a href="./index.html">Home</a></li>
       <li><a href="./about.html">About</a></li>
@@ -54,17 +54,20 @@
       </div>
       <!-- Section that tells you the MSOA name when hovering over-->
       <div id="msoa_display">
-      <div id="msoa_name">
-        <strong>Select an area</strong>
-      </div>
-      <div id="clear_selection">
-        &#10006;
-      </div>
+        <div id="msoa_name">
+          <strong>Click on an area to explore</strong>
+        </div>
+        <div id="clear_selection" class="close">
+          &#10006;
+        </div>
       </div>
     </div>
     <!-- Box Pop Up depending on radio button-->
-    <div class="Deaths box" id="chart"> You have selected <strong>deaths</strong> so I am here <p>Standardised mortality ratio for deaths from causes considered preventable in persons of all ages</p>
-    <div id="msoa_selected">
+    <div class="Deaths box">
+      <div id="chart">
+      </div>
+      <div id="info">
+        <b>&#9432; </b> More information about data
       </div>
     </div>
     <div class="Clusters box"> You have selected <strong>clusters</strong> so I am here </div>
@@ -80,16 +83,61 @@
       <i>*100 = expected deaths</i>
     </div>
   </div>
+  <div id="myModal" class="modal">
 
+    <!-- Modal content -->
+    <div class="modal-content">
+      <p> <span id='close_info' class="close">&#10006;</span></p>
+      <h2>More information about data</h2>
+      <br>
+      <h3>Mortality ratios</h3>
+      <b>Source:</b> <a href="https://localhealth.org.uk/#c=home"> Public Health England</a>, produced from Office for National Statistics (ONS) data
+      <p>Standardised mortality ratio for deaths from causes considered preventable in persons of all ages. An indicator for preventable deaths includes deaths which could have been avoided by public health interventions focusing on wider
+        determinants of public health, such as behaviour and lifestyle factors, socioeconomic status and environmental factors.
+      </p>
+      <p><b>Year of data:</b> 2013-2017</p>
+      <br>
+      <h3><u>Causes of death</u></h3>
+      <b>Source:</b> <a href="https://localhealth.org.uk/#c=home"> Nomis: Official Market Labour Statistsics</a>, produced from Office for National Statistics (ONS) data
+      <p>Death counts per MSOA from causes considered preventable grouped into the following categories:</p>
+      <p><b>Lung Cancer:</b> Cancers found anywhere in the trachea, bronchus and lung</p>
+      <p><b>Ischaemic heart diseases:</b> Heart problems caused by narrowed heart (coronary) arteries that supply blood to the heart muscle. Also known as coronary heart disease (CHD).</p>
+      <p><b>Chronic lower respiratory diseases:</b> Diseases of the airways and other structures of the lung. Some of the most common are chronic obstructive pulmonary disease (COPD), asthma, occupational lung diseases and pulmonary hypertension. In addition to tobacco smoke, other risk factors include air pollution, occupational chemicals and dusts, and frequent lower respiratory infections during childhood. </p>
+      <p><b>Cerebrovascular diseases:</b> Diseases that restrict blood flow to the brain. The most common include stroke, carotid stenosis, aneurysms and vascular malformations.</p>
+      <p><b>Oesophageal cancer
+:</b> Cancers found anywhere in the oesophagus, which connects your mouth to your stomach.</p>
+      <p><b>Accidental Injuries:</b> Accidents, falls, accidental drowning and submersion, exposure to smoke, fire and flames or accidental poisoning.</p>
+      <p><b>Other:</b> All other causes of death considered preventable.</p>
+      <p><b>Year of data:</b> 2019</p>
+    </div>
+
+  </div>
 </body>
 
 <!-- SCRIPTS w-->
-<script type='module' src='./scripts/pop_up.js'></script>
+<script type="text/javascript">
+  mapboxgl.accessToken = 'pk.eyJ1IjoiemNmdHNzdyIsImEiOiJja212c24wdW4wNmsxMm9tdG5udzVsMjd4In0.HB4Oh1U4CqgR4psD72awjQ';
+  // Set bounds to UK
+  var bounds = [
+    [-15.996088, 45.763929], // Southwest coordinates
+    [12.480474, 62.012030] // Northeast coordinates
+  ];
+  //-1.434713, 52.622569
+
+  var map = new mapboxgl.Map({
+    container: 'mapbox', // container id
+    style: 'mapbox://styles/zcftssw/cknagpjwh3dm617qxeokn7amw', // style URL
+    center: [-0.840388033475420, 52.920856159299575], // starting position [lng, lat]
+    zoom: 5.2, // starting zoom
+    minZoom: 4.5, // min zoom
+    maxBounds: bounds
+  });
+</script>
 <script type='module' src='./scripts/map.js'></script>
-<!--<script type='module' src='./scripts/chart.js'></script>
+<script type='module' src='./scripts/pop_up.js'></script>
 
 
 
 
 
-    </html>
+</html>

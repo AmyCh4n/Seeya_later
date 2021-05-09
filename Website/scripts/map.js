@@ -1,21 +1,3 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiemNmdHNzdyIsImEiOiJja212c24wdW4wNmsxMm9tdG5udzVsMjd4In0.HB4Oh1U4CqgR4psD72awjQ';
-// Set bounds to UK
-var bounds = [
-  [-15.996088, 45.763929], // Southwest coordinates
-  [12.480474, 62.012030] // Northeast coordinates
-];
-//-1.434713, 52.622569
-
-var map = new mapboxgl.Map({
-  container: 'mapbox', // container id
-  style: 'mapbox://styles/zcftssw/cknagpjwh3dm617qxeokn7amw', // style URL
-  center: [-0.840388033475420, 52.920856159299575], // starting position [lng, lat]
-  zoom: 5.2, // starting zoom
-  minZoom: 4.5, // min zoom
-  maxBounds: bounds
-});
-
-
 //Adding a hoveredStateId
 var hoveredStateId = null;
 //Adding a selected MSOA id
@@ -24,6 +6,7 @@ var clickedMSOAId = null;
 var clickedMSOAname = "";
 var clickedMSOACode = "";
 var click = "";
+var barchartdata ="";
 
 
 // Add zoom controls to the map.
@@ -82,62 +65,209 @@ function ShowClickedMSOAName() {
   if (click.length > 0) {
     document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click[0].properties.msoa11hclnm + '';
   } else {
-    document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
+    document.getElementById('msoa_name').innerHTML = '<strong>Click on an area to explore </strong>'
   }
 };
 
-//Function that returns the death data depending on selected MSOA
+//Function that returns the death data depending on selected MSOA and draws the chart
 function GetDeathData(code) {
-  $.getJSON("http://dev.spatialdatacapture.org:" + 8707 + "/data/MSOACode/" + code, function(data) {
-    //console.log("Proportion of Accidents:"+ data[0].lung_prop);
-    var barchartdata = [data[0].lung_prop, data[0].heart_prop, data[0].respiratory_prop, data[0].cerebrovascular_prop, data[0].oesophageal_prop, data[0].accident_prop, data[0].other_prop];
-    console.log(barchartdata);
-
-    const chart = Highcharts.chart('chart', {
-      chart: {
-        backgroundColor: 'rgba(0,0,0,0)',
-        type: 'bar'
-      },
-      title: {
-        style: {
-          color: '#ffff'
+    $.getJSON("http://dev.spatialdatacapture.org:" + 8707 + "/data/MSOACode/" + code, function(data) {
+      //Get list of counts from data returned by API
+      barchartdata = [{
+          y: data[0].lung_prop,
+          val: data[0].lung_count
+        }, {
+          y: data[0].heart_prop,
+          val: data[0].heart_count
         },
-        text: 'Causes of Death'
-      },
-      xAxis: {
-        style: {
-          color: '#ffff'
+        {
+          y: data[0].respiratory_prop,
+          val: data[0].respiratory_count
         },
-        categories: ['Lung Cancer', 'Ischaemic Heart Disease', 'Chronic Respiratory Illness', 'Cerebrovascular Disease', 'Oesophageal Cancer', 'Accidental Injuries', 'Other'],
-        labels: {
-          style: {
-            color: '#ffff'
-          }
+        {
+          y: data[0].cerebrovascular_prop,
+          val: data[0].cerebrovascular_count
+        },
+        {
+          y: data[0].oesophageal_prop,
+          val: data[0].oesophageal_count
+        }, {
+          y: data[0].accident_prop,
+          val: data[0].accident_count
+        },
+        {
+          y: data[0].other_prop,
+          val: data[0].other_count
         }
-      },
-      yAxis: {
+      ];
+
+      // DRAW THE CHART
+      const chart = Highcharts.chart('chart', {
+        chart: {
+          backgroundColor: 'rgba(255,255,255, 0.1)',
+          type: 'bar',
+          marginLeft:170,
+          style: {
+            fontFamily: "\"Poppins\", sans-serif"
+          }
+        },
         title: {
           style: {
             color: '#ffff'
           },
-          text: 'Portion of Recorded Preventable Deaths'
+          text: 'Causes of Death'
         },
-        labels: {
+        subtitle: {
           style: {
             color: '#ffff'
+          },
+          text: click[0].properties.msoa11hclnm
+        },
+        xAxis: {
+          style: {
+            color: '#ffff'
+          },
+          categories: ['Lung Cancer', 'Ischaemic Heart Disease', 'Chronic Respiratory \n Illness', 'Cerebrovascular Disease', 'Oesophageal Cancer', 'Accidental Injuries', 'Other'],
+          labels: {
+            align: 'right',
+            style: {
+              color: '#ffff',
+              wordBreak: 'break-all'
+            }
+          }
+        },
+        yAxis: {
+          title: {
+            style: {
+              color: '#ffff'
+            },
+            text: 'Portion of Recorded Preventable Deaths'
+          },
+          labels: {
+            formatter: function() {
+              return (this.isLast ? this.value + '%' : this.value);
+            },
+            style: {
+              color: '#ffff'
+            },
+
+          },
+          tickPositions: [0, 20, 40, 60, 80, 100]
+        },
+        series: [{
+          name: 'Count of Preventable Deaths',
+          showInLegend: false,
+          data: barchartdata,
+          color: '#F27405',
+        }],
+        tooltip: {
+          formatter: function() {
+            return 'Count of deaths: ' + this.point.val;
           }
         }
-      },
-      series: [{
-        showInLegend: false,
-        data: barchartdata
-      }]
+      });
+
+
     });
-
-
-  });
 };
 
+//Draws barchart for ENGLAND
+function BarEngland(){
+  barchartdata = barchartdata = [{
+      y: 28.52,
+      val: 29690
+    }, {
+      y: 25.61,
+      val: 26668
+    },
+    {
+      y: 25.44,
+      val: 26484
+    },
+    {
+      y: 7.18,
+      val: 7480
+    },
+    {
+      y: 3.13,
+      val: 3259
+    }, {
+      y: 2.04,
+      val: 2119
+    },
+    {
+      y: 8.08,
+      val: 8411
+    }
+  ];
+
+  // DRAW THE CHART
+  const chart = Highcharts.chart('chart', {
+    chart: {
+      backgroundColor: 'rgba(255,255,255, 0.1)',
+      type: 'bar',
+      marginLeft:170,
+      style: {
+        fontFamily: "\"Poppins\", sans-serif"
+      }
+    },
+    title: {
+      style: {
+        color: '#ffff'
+      },
+      text: 'Causes of Death'
+    },
+    subtitle: {
+      style: {
+        color: '#ffff'
+      },
+      text: "England"
+    },
+    xAxis: {
+      style: {
+        color: '#ffff'
+      },
+      categories: ['Lung Cancer', 'Ischaemic Heart Disease', 'Chronic Respiratory \n Illness', 'Cerebrovascular Disease', 'Oesophageal Cancer', 'Accidental Injuries', 'Other'],
+      labels: {
+        align: 'right',
+        style: {
+          color: '#ffff',
+          wordBreak: 'break-all'
+        }
+      }
+    },
+    yAxis: {
+      title: {
+        style: {
+          color: '#ffff'
+        },
+        text: 'Portion of Recorded Preventable Deaths'
+      },
+      labels: {
+        formatter: function() {
+          return (this.isLast ? this.value + '%' : this.value);
+        },
+        style: {
+          color: '#ffff'
+        },
+
+      },
+      tickPositions: [0, 20, 40, 60, 80, 100]
+    },
+    series: [{
+      name: 'Count of Preventable Deaths',
+      showInLegend: false,
+      data: barchartdata,
+      color: '#F27405',
+    }],
+    tooltip: {
+      formatter: function() {
+        return 'Count of deaths: ' + this.point.val;
+      }
+    },
+  });
+
+};
 
 // When map loads...
 map.on('load', function() {
@@ -253,7 +383,7 @@ map.on('load', function() {
       if (click.length > 0) {
         document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click[0].properties.msoa11hclnm + ''
       } else {
-        document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
+        document.getElementById('msoa_name').innerHTML = '<strong>Click on an area to explore </strong>'
       }
     }
   };
@@ -267,9 +397,14 @@ map.on('load', function() {
     ShowClickedMSOAName();
     ShowClickedMSOA(e);
     ToggleCLoseButton();
-    clickedMSOACode = click[0].properties.MSOA_code;
+    if (click.length > 0) {
+      clickedMSOACode = click[0].properties.MSOA_code;
+      GetDeathData(clickedMSOACode);
+    } else {
+      clickedMSOACode = ""
+      BarEngland();
+    };
     console.log(clickedMSOACode);
-    GetDeathData(clickedMSOACode);
   });
 
 
@@ -314,6 +449,8 @@ function DisplayLayer() {
       // Show the deaths layer
       map.setLayoutProperty('msoa', 'visibility', 'visible');
       map.setLayoutProperty('msoa-borders', 'visibility', 'visible');
+      //Draw the england barchart
+      BarEngland();
       $('#legend').show(); //Shows the legend
     } else {
       map.setLayoutProperty('msoas', 'visibility', 'none');
@@ -343,6 +480,7 @@ function close_button() {
   ToggleCLoseButton();
   ShowClickedMSOA();
   ShowClickedMSOAName();
+  BarEngland();
 };
 
 document.getElementById("clear_selection").addEventListener("click", close_button);
