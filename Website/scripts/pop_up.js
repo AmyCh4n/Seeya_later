@@ -1,3 +1,9 @@
+//Once map has loaded, make radio buttons clickable to avoid map layer not being loaded on tim
+map.on('load', function() {
+  $('#Deaths').removeAttr('disabled');
+  $('#Clusters').removeAttr('disabled');});
+
+
 $(document).ready(function(){
 $('input[type="radio"]').click(function() {
   if ($(this).is(':checked')) {
