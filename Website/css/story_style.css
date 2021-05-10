@@ -1,4 +1,5 @@
-/*Home Page*/
+/*------------------------Home Page-------------------------------*/
+
 html, body, #fullheight {
     min-height: 100% !important;
     height: 100%;}
@@ -48,10 +49,17 @@ nav ul li a{
   border-radius: 5px;
   text-transform: uppercase;
 }
-a.active,a:hover{
+
+nav a.active {
   background: #F27405;
   transition: .5s;
 }
+
+nav a:hover{
+  color: #F27405;
+  transition: .5s;
+}
+
 .checkbtn{
   font-size: 30px;
   color: white;
@@ -95,10 +103,7 @@ a.active,a:hover{
   nav ul li a{
     font-size: 20px;
   }
-  a:hover,a.active{
-    background: none;
-    color: #0082e6;
-  }
+
   #check:checked ~ ul{
     left: 0;
   }
