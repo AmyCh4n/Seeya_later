@@ -344,10 +344,6 @@ input[type='radio']:checked ~label {
       		padding: 5%;
     border-radius:10px}
 
-.ClusterDescription:hover{
-  border: 3px solid white;
-  cursor:pointer;
-}
 
 .ClusterDescription u {
   font-weight: bold;
@@ -447,6 +443,7 @@ margin-right: 5px;
 width: 10px;
 }
 
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -461,8 +458,9 @@ width: 10px;
   /*height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  transition: all ease 2s;
+  background: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-transition: opacity 0.7s;
+  transition: opacity 0.7s;
 }
 
 .modal:target {
@@ -481,7 +479,23 @@ width: 10px;
   padding: 20px;
   border: 1px solid white;
   width: 80%;
+  -webkit-animation-name: animatetop;
+-webkit-animation-duration: 0.4s;
+animation-name: animatetop;
+animation-duration: 0.4s
 }
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+from {top:0px; opacity:0}
+to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+from {top:0px; opacity:0}
+to {top:0; opacity:1}
+}
+
 
 .modal-content a{
   color: #ffedc9;
@@ -492,4 +506,61 @@ width: 10px;
 }
 
 
-/* The Close Button */
+/* The ScrollBar */
+/* width */
+::-webkit-scrollbar {
+width: 10px;
+cursor:pointer;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: #c0cde2;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #35478C;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #41508c;
+cursor: pointer;
+}
+/* Buttons */
+::-webkit-scrollbar-button:single-button {
+ background-color: #c0cde2;
+
+ display: block;
+ background-size: 10px;
+ background-repeat: no-repeat;
+}
+
+/* Up */
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+ height: 12px;
+ width: 16px;
+ background-position: center 4px;
+ background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(53, 70, 140)'><polygon points='50,00 0,50 100,50'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+ background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(112, 112, 112)'><polygon points='50,00 0,50 100,50'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement:active {
+ background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(112, 112, 112)'><polygon points='50,00 0,50 100,50'/></svg>");
+}
+
+/* Down */
+::-webkit-scrollbar-button:single-button:vertical:increment {
+ height: 12px;
+ width: 16px;
+ background-position: center 2px;
+ background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(53, 70, 140)'><polygon points='0,0 100,0 50,50'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment:hover {
+ background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(112, 112, 112)'><polygon points='0,0 100,0 50,50'/></svg>");
+}

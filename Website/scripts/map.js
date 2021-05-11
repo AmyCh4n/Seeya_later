@@ -9,17 +9,6 @@ var click = "";
 var barchartdata ="";
 
 
-// Add zoom controls to the map.
-map.addControl(new mapboxgl.NavigationControl());
-// Add a search bar to the map
-map.addControl(
-  new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    mapboxgl: mapboxgl,
-    countries: 'gb' //Limit search to GB
-  }), 'top-left'
-);
-
 // Read in MSOA data and check that it worked
 const msoas = './data/gdf_prevantable_deaths.geojson'
 console.log(msoas);
@@ -388,14 +377,14 @@ map.on('load', function() {
     }
   };
   //-------------------------------------------Calling interactivity based on mouse events-----------------------------------------------
-
-  // Listen for click on map and carry out click functions
+function Click_Deaths(){
   map.on('click', function(e) {
+    console.log('deaths_click');
     click = map.queryRenderedFeatures(e.point, {
       layers: ['msoa']
     });
     ShowClickedMSOAName();
-    ShowClickedMSOA(e);
+    ShowClickedMSOA();
     ToggleCLoseButton();
     if (click.length > 0) {
       clickedMSOACode = click[0].properties.MSOA_code;
@@ -406,6 +395,15 @@ map.on('load', function() {
     };
     console.log(clickedMSOACode);
   });
+};
+
+
+  //Only run these functions if clusters is checked
+  $('input:radio[name="drone"]').change(function() {
+    if ($(this).is(':checked') && $(this).val() == 'Deaths') {
+      console.log("test");
+      Click_Deaths();
+  // Listen for click on map and carry out click functions
 
 
 
@@ -433,7 +431,8 @@ map.on('load', function() {
   });
 
 
-
+};
+});
 
 
 });
@@ -445,7 +444,8 @@ function DisplayLayer() {
   $('#Deaths').click(function() {
     if ($(this).is(':checked')) {
       // Hide the clusters layer (if it's not already hidden)
-
+      map.setLayoutProperty('allclusters', 'visibility', 'none');
+      map.setLayoutProperty('clusters-borders', 'visibility', 'none');
       // Show the deaths layer
       map.setLayoutProperty('msoa', 'visibility', 'visible');
       map.setLayoutProperty('msoa-borders', 'visibility', 'visible');

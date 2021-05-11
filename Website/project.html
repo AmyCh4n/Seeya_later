@@ -131,25 +131,25 @@
       <h2>More information about data</h2>
       <br>
       <h3>Mortality ratios</h3>
-      <b>Source:</b> <a href="https://localhealth.org.uk/#c=home"> Public Health England</a>, produced from Office for National Statistics (ONS) data
+      <b>Source:</b> <a href="https://localhealth.org.uk/#c=home"> Public Health England</a>, produced from Office for National Statistics (ONS) data <br>
       <p>Standardised mortality ratio for deaths from causes considered preventable in persons of all ages. An indicator for preventable deaths includes deaths which could have been avoided by public health interventions focusing on wider
         determinants of public health, such as behaviour and lifestyle factors, socioeconomic status and environmental factors.
-      </p>
+      </p><br>
       <p><b>Year of data:</b> 2013-2017</p>
       <br>
       <h3><u>Causes of death</u></h3>
-      <b>Source:</b> <a href="https://localhealth.org.uk/#c=home"> Nomis: Official Market Labour Statistsics</a>, produced from Office for National Statistics (ONS) data
+      <b>Source:</b> <a href="https://localhealth.org.uk/#c=home"> Nomis: Official Market Labour Statistsics</a>, produced from Office for National Statistics (ONS) data <br>
       <p>The results from the review of avoidable mortality definition from the ONS (2019) identifies the proportion of each cause of death considered either treatable or preventable. This, combined with the death data from Nomis, was used to
-        identify the numbers of deaths by MSOA by cause considered preventable. The results were aggregated by cause group summarised below:</p>
-      <p><b>Lung Cancer:</b> Cancers found anywhere in the trachea, bronchus and lung</p>
-      <p><b>Ischaemic heart diseases:</b> Heart problems caused by narrowed heart (coronary) arteries that supply blood to the heart muscle. Also known as coronary heart disease (CHD).</p>
+        identify the numbers of deaths by MSOA by cause considered preventable. The results were aggregated by cause group summarised below:</p><br>
+      <p><b>Lung Cancer:</b> Cancers found anywhere in the trachea, bronchus and lung</p><br>
+      <p><b>Ischaemic heart diseases:</b> Heart problems caused by narrowed heart (coronary) arteries that supply blood to the heart muscle. Also known as coronary heart disease (CHD).</p><br>
       <p><b>Chronic lower respiratory diseases:</b> Diseases of the airways and other structures of the lung. Some of the most common are chronic obstructive pulmonary disease (COPD), asthma, occupational lung diseases and pulmonary hypertension. In
-        addition to tobacco smoke, other risk factors include air pollution, occupational chemicals and dusts, and frequent lower respiratory infections during childhood. </p>
-      <p><b>Cerebrovascular diseases:</b> Diseases that restrict blood flow to the brain. The most common include stroke, carotid stenosis, aneurysms and vascular malformations.</p>
+        addition to tobacco smoke, other risk factors include air pollution, occupational chemicals and dusts, and frequent lower respiratory infections during childhood. </p><br>
+      <p><b>Cerebrovascular diseases:</b> Diseases that restrict blood flow to the brain. The most common include stroke, carotid stenosis, aneurysms and vascular malformations.</p><br>
       <p><b>Oesophageal cancer
-          :</b> Cancers found anywhere in the oesophagus, which connects your mouth to your stomach.</p>
-      <p><b>Accidental Injuries:</b> Accidents, falls, accidental drowning and submersion, exposure to smoke, fire and flames or accidental poisoning.</p>
-      <p><b>Other:</b> All other causes of death considered preventable.</p>
+          :</b> Cancers found anywhere in the oesophagus, which connects your mouth to your stomach.</p><br>
+      <p><b>Accidental Injuries:</b> Accidents, falls, accidental drowning and submersion, exposure to smoke, fire and flames or accidental poisoning.</p><br>
+      <p><b>Other:</b> All other causes of death considered preventable.</p><br>
       <p><b>Year of data:</b> 2019</p>
     </div>
 
@@ -173,10 +173,20 @@
     minZoom: 4.5, // min zoom
     maxBounds: bounds
   });
+  // Add zoom controls to the map.
+  map.addControl(new mapboxgl.NavigationControl());
+  // Add a search bar to the map
+  map.addControl(
+    new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl,
+      countries: 'gb' //Limit search to GB
+    }), 'top-left'
+  );
 </script>
-<script type='module' src='./scripts/map.js'></script>
+<script type='module' src='./scripts/map_final.js'></script>
 <script type='module' src='./scripts/pop_up.js'></script>
-<script type='module' src='./scripts/clusters.js'></script>
+
 
 
 

@@ -1,51 +1,27 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiemNmdHNzdyIsImEiOiJja212c24wdW4wNmsxMm9tdG5udzVsMjd4In0.HB4Oh1U4CqgR4psD72awjQ';
 
-// Set bounds to UK
-var bounds = [
-[-15.996088,45.763929],// Southwest coordinates
-[12.480474,62.012030]// Northeast coordinates
-];
-//-1.434713, 52.622569
-
-
-var map = new mapboxgl.Map({
-  container: 'mapbox', // container id
-  style: 'mapbox://styles/zcftssw/cknagpjwh3dm617qxeokn7amw', // style URL
-  center: [-0.840388033475420,52.920856159299575], // starting position [lng, lat]
-  zoom: 5.2, // starting zoom
-  minZoom: 4.5, // min zoom
-  maxBounds: bounds
-});
-
 
 //Adding a hoveredStateId
-var hoveredStateId = null;
+var hoveredStateId_clusters = null;
+var hover_clusters="";
 //Adding a selected MSOA id
-var clickedMSOAId = null;
+var clickedMSOAId_clusters = null;
 //Adding a selcted MSOA msoa_name
-var clickedMSOAname = "";
-var clickedMSOACode = "";
-var click = "";
+var clickedMSOAname_clusters = "";
+var clickedMSOACode_clusters = "";
+var click_clusters = "";
+var selectedcluster="";
 
 // Store cluster names as list
     var clusterNames = ['On the margin', 'Less ethnically diverse national portrait',
                         'Sprinkles of death, deprivation and ethnicity', 'Slightly older and less risky',
                         'Young and multicultural metropolitans', 'Prosperous and ethnically uniform suburban enclaves',
 						'Scattered pockets of life and prosperity'];
-						
+
 	var cluster0 = ['On the margin'];
 
 
-// Add zoom controls to the map.
-map.addControl(new mapboxgl.NavigationControl());
-// Add a search bar to the map
-map.addControl(
-  new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    mapboxgl: mapboxgl,
-    countries: 'gb' //Limit search to GB
-  }), 'top-left'
-);
+
 
 
 // Read clusters
@@ -53,8 +29,8 @@ const clusters = './data/gdf_cluster7.geojson'
 console.log(clusters);
 
 //Show/hide close button based on if MSOA is selected or not.
-function ToggleCLoseButton() {
-  if (click.length > 0) {
+function ToggleCLoseButton_clusters() {
+  if (click_clusters.length > 0) {
     console.log("true");
     document.getElementById('clear_selection').style.display = 'block';
   } else {
@@ -63,47 +39,39 @@ function ToggleCLoseButton() {
 };
 
 // Set up function that shows clicked msoa
-function ShowClickedMSOA() {
+function ShowClickedMSOA_clusters() {
 
-  if (click.length > 0) {
+  if (click_clusters.length > 0) {
     map.removeFeatureState({
       source: "Clusters",
-      id: clickedMSOAId
+      id: clickedMSOAId_clusters
     });
-    clickedMSOAId = click[0].id;
+    clickedMSOAId_clusters = click_clusters[0].id;
     map.setFeatureState({
       source: 'Clusters',
-      id: clickedMSOAId,
+      id: clickedMSOAId_clusters,
     }, {
       clicked: true
     });
   } else {
     map.setFeatureState({
       source: 'Clusters',
-      id: clickedMSOAId,
+      id: clickedMSOAId_clusters,
     }, {
       clicked: false
     });
-    clickedMSOAId = null;
+    clickedMSOAId_clusters = null;
   }
 };
 
-function ShowClickedMSOAName() {
-  if (click.length > 0) {
-    document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click[0].properties.msoa11hclnm + '';
+function ShowClickedMSOAName_clusters() {
+  if (click_clusters.length > 0) {
+    document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click_clusters[0].properties.msoa11hclnm + '';
   } else {
-    document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
+    document.getElementById('msoa_name').innerHTML = '<strong>Click on an area to explore </strong>'
   }
 };
 
-// Set up function that shows clicked cluster
-function ShowClickedClusterName() {
-  if (click.length >= 0) {
-    document.getElementById('clusterNumber').innerHTML = '<strong>Cluster: </strong>' + click[0].properties.KMeans7 + '';
-  } else {
-    document.getElementById('clusterNumber').innerHTML = '<strong>Select a Cluster </strong>'
-  }
-};
 
 
 
@@ -150,7 +118,7 @@ map.on('load', function() {
 		]
 	}
     });
-	
+
 	  map.addLayer({
     'id': 'clusters-borders',
     'type': 'line',
@@ -174,33 +142,30 @@ map.on('load', function() {
         8, ['case', ['boolean', ['feature-state', 'clicked'], false], 2, 0.2] //Change size based on clicked state
       ]
     }
-	
+
 
 });
 
 
 
-  //---------------------------------------------Interactivity Functions ----------------------------------------------------------------
+
 
 
   // Set up function that changes color of msoa on hover
-  function HoverColour(a) {
-    var hover = map.queryRenderedFeatures(a.point, {
-      layers: ['allclusters']
-    });
-    if (hover.length > 0) {
-      if (hoveredStateId !== null) {
+  function HoverColour() {
+    if (hover_clusters.length > 0) {
+      if (hoveredStateId_clusters !== null) {
         map.setFeatureState({
           source: 'Clusters',
-          id: hoveredStateId
+          id: hoveredStateId_clusters
         }, {
           hover: false
         });
       }
-      hoveredStateId = hover[0].id;
+      hoveredStateId_clusters = hover_clusters[0].id;
       map.setFeatureState({
         source: 'Clusters',
-        id: hoveredStateId
+        id: hoveredStateId_clusters
       }, {
         hover: true
       });
@@ -209,48 +174,54 @@ map.on('load', function() {
 
 
   //Display name on hover
-  function HoverName(a) {
-    var msoa_hover = map.queryRenderedFeatures(a.point, {
-      layers: ['allclusters']
-    });
-    if (msoa_hover.length > 0) {
-      if ((click === null || click.length === 0) && msoa_hover.length > 0) {
-        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + msoa_hover[0].properties.msoa11hclnm + '';
-      } else if (click.length > 0) {
-        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click[0].properties.msoa11hclnm + ''
+  function HoverName_clusters() {
+    if (hover_clusters.length > 0) {
+      if ((click_clusters === null || click_clusters.length === 0) && hover_clusters.length > 0) {
+        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + hover_clusters[0].properties.msoa11hclnm + '';
+      } else if (click_clusters.length > 0) {
+        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click_clusters[0].properties.msoa11hclnm + ''
       }
-    } else if (msoa_hover.length == 0) {
-      if (click.length > 0) {
-        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click[0].properties.msoa11hclnm + ''
+    } else if (hover_clusters.length == 0) {
+      if (click_clusters.length > 0) {
+        document.getElementById('msoa_name').innerHTML = '<strong>MSOA: </strong>' + click_clusters[0].properties.msoa11hclnm + ''
       } else {
-        document.getElementById('msoa_name').innerHTML = '<strong>Select an area </strong>'
+        document.getElementById('msoa_name').innerHTML = '<strong>Click on an area to explore </strong>'
       }
     }
   };
-  
+
 
 //-------------------------------------------Calling interactivity based on mouse events-----------------------------------------------
 
-  // Listen for click on map and carry out click functions
+function Clusters_Click(){
   map.on('click', function(e) {
-    click = map.queryRenderedFeatures(e.point, {
+    console.log('cluster_click');
+    click_clusters = map.queryRenderedFeatures(e.point, {
       layers: ['allclusters']
     });
-    ShowClickedMSOAName();
-    ShowClickedMSOA(e);
-	ShowClickedClusterName(e);
-    ToggleCLoseButton();
-    clickedMSOACode = click[0].properties.MSOA_code;
-    console.log(clickedMSOACode);
+    ShowClickedMSOAName_clusters();
+    ShowClickedMSOA_clusters();
+    ToggleCLoseButton_clusters();
+    selectedcluster=click_clusters[0].properties.KMeans7;
+    console.log(selectedcluster);
   });
-
+}
+//Only run these functions if clusters is checked
+$('input:radio[name="drone"]').change(function() {
+  if ($(this).is(':checked') && $(this).val() == 'Clusters') {
+    console.log('clusters_test');
+    Clusters_Click();
+  // Listen for click on map and carry out click functions
 
 
   //hover effects
   map.on('mousemove', function(e) {
     map.getCanvas().style.cursor = 'pointer'; //Display as pointer when hovering over map
+    hover_clusters = map.queryRenderedFeatures(e.point, {
+      layers: ['allclusters']
+    });
     HoverColour(e);
-    HoverName(e);	
+    HoverName_clusters(e);
   });
 
 
@@ -258,17 +229,19 @@ map.on('load', function() {
   // previously hovered feature. --> Might make this a function too
   map.on('mouseleave', 'Clusters', function() {
     map.getCanvas().style.cursor = '';
-    if (hoveredStateId !== null) {
+    if (hoveredStateId_clusters !== null) {
       map.setFeatureState({
         source: 'Clusters',
-        id: hoveredStateId
+        id: hoveredStateId_clusters
       }, {
         hover: false
       });
     }
-    hoveredStateId = null;
+    hoveredStateId_clusters = null;
   });
 
+}
+});
 
 });
 
@@ -281,9 +254,12 @@ function DisplayLayer() {
     if ($(this).is(':checked')) {
 	//Show the culsters layer
       map.setLayoutProperty('allclusters', 'visibility', 'visible');
-      map.setLayoutProperty('clusters-borders', 'visibility', 'visible')
+      map.setLayoutProperty('clusters-borders', 'visibility', 'visible');
+  //Hide the deaths layers
+  map.setLayoutProperty('msoa', 'visibility', 'none');
+  map.setLayoutProperty('msoa-borders', 'visibility', 'none')
       $('#legend').hide();
-      
+
     }
   });
 };
@@ -292,21 +268,15 @@ DisplayLayer();
 //Set MSOA name to empty if clear_selection button is clicked
 function clear_selection() {
   console.log('click!')
-  clickedMSOAname = ""; //Set the var to empty
-  click = "";
+  clickedMSOAname_clusters = ""; //Set the var to empty
+  click_clusters = "";
 };
 
 function close_button() {
   clear_selection();
-  ToggleCLoseButton();
-  ShowClickedMSOA();
-  ShowClickedMSOAName();
-  ShowClickedClusterName();
+  ToggleCLoseButton_clusters();
+  ShowClickedMSOA_clusters();
+  ShowClickedMSOAName_clusters();
 };
 
 document.getElementById("clear_selection").addEventListener("click", close_button);
-
-
-
-
-
