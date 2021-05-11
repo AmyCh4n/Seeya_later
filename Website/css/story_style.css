@@ -365,39 +365,7 @@ input[type='radio']:checked ~label {
   padding: 50px 5px 60px 5px;
 }
 
-/*Drop down menu*/
-/*Dropdown button*/
-.dropbtn{
-  background-color: #161A39;
-  color: white;
-  padding: 16px;
-  font-size: 15px;
-  border: none;
-  cursor: pointer;
-}
-
-/*Dropdown button on hover & focus*/
-.dropbtn:hover, .dropbtn:focus{
-  background-color: #374987;
-}
-
-/*position the dropdown content*/
-.dropdown{
-  position: relative;
-  display: inline-block;
-}
-
-/*dropdown content hidden by default*/
-.dropdown-content{
-  display: none;
-  position: absolute;
-  background-color: #161A39;
-  min-width: 160px;
-  box-shadow: 0px, 8px, 16px, 0px rgba;
-  z-index: 1;
-}
-
-/*collapsible*/
+/*Collapsible Menu*/
 .collapsible{
   background-color: #161A39;
   color: white;
@@ -405,14 +373,14 @@ input[type='radio']:checked ~label {
   padding: 18px;
   width: 100%;
   border: none;
-  text-align: left;
+  text-align: center;
   outline: none;
   font-size: 15px;
 }
 
 /*Background colour when button clicked*/
 .active, .collapsible:hover{
-  background-color: #374987;
+  background-color: #F27405;
 }
 
 /*collapsible hidden by default*/
@@ -420,16 +388,8 @@ input[type='radio']:checked ~label {
   padding: 0 18px;
   display: none;
   overflow: hidden;
-  background-color: #567BC1;
-}
-
-/*change colour of the drop down links on hover*/
-.dropdown-content:hover{
-  background-color: #374987;
-}
-
-.show{
-  display: block;
+  background-color: #557AB5;
+  padding-bottom: 50px;
 }
 
 /*Containers*/
@@ -438,6 +398,7 @@ input[type='radio']:checked ~label {
   display: 100%;
   column-count: 2;
   float: center;
+  padding-bottom: 70px;
 }
 
 .sdsimgcontainer figure img{
@@ -453,17 +414,16 @@ input[type='radio']:checked ~label {
 }
 
 .sdsimgcontainer figure:hover img{
-  /*Makes orange shadow appear*/
+  /*Makes orange shadow appear
   -moz-box-shadow: 100px 0 30px #ccc;
   -webkit-box-shadow: 0 0 30px #ccc;
-  box-shadow: 20px 0px 0px #F27405;
+  box-shadow: 20px 0px 0px #F27405;*/
   opacity: .5;
   transition: .3s;
 }
 
 /*Spatial Scale*/
 #sssimgcontainer{
-  border: 3px solid #fff;
   padding: 20px;
   height: auto;
 }
@@ -525,10 +485,15 @@ input[type='radio']:checked ~label {
   height: auto;
 }
 
+.emptyBottom{
+  height: 50px;
+}
+
 /*----------------------------------Footer----------------------------------------*/
 footer{
   text-align: center;
   padding: 40px;
   background-color: #35478C;
   color: white;
+  max-width: 100%;
 }
