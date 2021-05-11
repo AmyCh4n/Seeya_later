@@ -1,4 +1,5 @@
-/*Home Page*/
+/*------------------------Home Page-------------------------------*/
+
 html, body, #fullheight {
     min-height: 100% !important;
     height: 100%;}
@@ -48,10 +49,17 @@ nav ul li a{
   border-radius: 5px;
   text-transform: uppercase;
 }
-.nav a.active, .nav a:hover{
+
+nav a.active {
   background: #F27405;
   transition: .5s;
 }
+
+nav a:hover{
+  color: #F27405;
+  transition: .5s;
+}
+
 .checkbtn{
   font-size: 30px;
   color: white;
@@ -95,10 +103,7 @@ nav ul li a{
   nav ul li a{
     font-size: 20px;
   }
-  a:hover,a.active{
-    background: none;
-    color: #0082e6;
-  }
+
   #check:checked ~ ul{
     left: 0;
   }
@@ -331,6 +336,54 @@ input[type='radio']:checked ~label {
 .Deaths{height:300px;}
 .Clusters{}
 
+.ClusterDescription{border:1px solid white;
+    margin: 15px;
+    vertical-align: middle;
+          height:auto;
+          font-size: 14px;
+      		padding: 5%;
+    border-radius:10px}
+
+.ClusterDescription:hover{
+  border: 3px solid white;
+  cursor:pointer;
+}
+
+.ClusterDescription u {
+  font-weight: bold;
+  font-style: italic;
+}
+
+#Cluster1{
+  		background-color: #40e0d0;
+  }
+
+#Cluster2{
+  background-color: #fa8072;
+}
+
+#Cluster3{
+  		background-color: #daa520;
+  }
+
+#Cluster4{
+  		background-color: #2e8b57;
+  }
+
+#Cluster5{
+  		background-color: #f4a460;
+  }
+
+#Cluster6{
+  		background-color: #d8bfd8;
+  }
+
+#Cluster7{
+  		background-color: #a9a9a9;
+  }
+
+
+
 #clear_selection{
   width:50%
   height:100%;
@@ -424,6 +477,7 @@ width: 10px;
   color:white;
   top:20px;
   margin:auto;
+  text-align: left;
   padding: 20px;
   border: 1px solid white;
   width: 80%;
@@ -436,8 +490,6 @@ width: 10px;
 .modal-content a:hover{
   color:#F27405;
 }
-
-
 
 
 /* The Close Button */
