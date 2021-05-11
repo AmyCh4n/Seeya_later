@@ -18,6 +18,7 @@
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
+
 </head>
 
 <body>
@@ -70,7 +71,46 @@
         <b>&#9432; </b> More information about data
       </div>
     </div>
-    <div class="Clusters box"> You have selected <strong>clusters</strong> so I am here </div>
+    <div class="Clusters box">
+      <h3>Clusters:</h3>
+      <div id="Cluster1" class="ClusterDescription">
+        <p> 1.<u> On the Margin:</u></p><br>
+        <p>This cluster is characterised by mostly being
+          geographically located on England’s coast.
+          All the variables differ slightly from the national average,
+          except for ‘Subcont’ which equals England’s average.</p>
+      </div>
+      <div id="Cluster2" class="ClusterDescription">
+        <p>2.<u> Less ethnically diverse national portrait:</u></p><br>
+        <p>MSOAs in this cluster are slightly less ethnically diverse pockets.
+          The remaining variables closely follow the national averages.</p>
+      </div>
+      <div id="Cluster3" class="ClusterDescription">
+        <p>3.<u> Sprinkles of death, deprivation and ethnicity:</u></p><br>
+        <p>Scattered and extremely ethnically diverse MSOAs that are the most deprived and most prone to preventable deaths.
+          The 65+ population is also noticeably lower than the national average.</p>
+      </div>
+      <div id="Cluster4" class="ClusterDescription">
+        <p>4.<u> Slightly older and less risky:</u></p><br>
+        <p>Covering most of (rural) England, MSOAs within this cluster have the highest 65+ population by percentage,
+          are least at risk of preventable deaths, and are comfortably less deprived than the national average.</p>
+      </div>
+      <div id="Cluster5" class="ClusterDescription">
+        <p>5.<u> Young and multicultural metropolitans:</u></p><br>
+        <p>Extremely ethnically diverse urban areas that have noticeably larger than average 16-24 and 25-64 populations, and a smaller 65+ population.
+          MSOAs within this cluster also have a slightly lower likelihood of preventable death.</p>
+      </div>
+      <div id="Cluster6" class="ClusterDescription">
+        <p>6.<u> Prosperous and ethnically uniform suburban enclaves:</u></p><br>
+        <p>MSOAs within this cluster are the least ethnically diverse, having the 2nd lowest multiple deprivation score,
+          and are also significantly less prone to preventable deaths.</p>
+      </div>
+      <div id="Cluster7" class="ClusterDescription">
+        <p>7.<u> Scattered pockets of life and prosperity :</u></p><br>
+        <p>This cluster is characterised as being the least deprived and the least prone to preventable deaths.
+          The remaining variables closely resemble the national averages.
+      </div>
+    </div>
   </div>
   <div id="mapbox">
     <div class='map-overlay' id='legend'>
@@ -99,13 +139,15 @@
       <br>
       <h3><u>Causes of death</u></h3>
       <b>Source:</b> <a href="https://localhealth.org.uk/#c=home"> Nomis: Official Market Labour Statistsics</a>, produced from Office for National Statistics (ONS) data
-      <p>Death counts per MSOA from causes considered preventable grouped into the following categories:</p>
+      <p>The results from the review of avoidable mortality definition from the ONS (2019) identifies the proportion of each cause of death considered either treatable or preventable. This, combined with the death data from Nomis, was used to
+        identify the numbers of deaths by MSOA by cause considered preventable. The results were aggregated by cause group summarised below:</p>
       <p><b>Lung Cancer:</b> Cancers found anywhere in the trachea, bronchus and lung</p>
       <p><b>Ischaemic heart diseases:</b> Heart problems caused by narrowed heart (coronary) arteries that supply blood to the heart muscle. Also known as coronary heart disease (CHD).</p>
-      <p><b>Chronic lower respiratory diseases:</b> Diseases of the airways and other structures of the lung. Some of the most common are chronic obstructive pulmonary disease (COPD), asthma, occupational lung diseases and pulmonary hypertension. In addition to tobacco smoke, other risk factors include air pollution, occupational chemicals and dusts, and frequent lower respiratory infections during childhood. </p>
+      <p><b>Chronic lower respiratory diseases:</b> Diseases of the airways and other structures of the lung. Some of the most common are chronic obstructive pulmonary disease (COPD), asthma, occupational lung diseases and pulmonary hypertension. In
+        addition to tobacco smoke, other risk factors include air pollution, occupational chemicals and dusts, and frequent lower respiratory infections during childhood. </p>
       <p><b>Cerebrovascular diseases:</b> Diseases that restrict blood flow to the brain. The most common include stroke, carotid stenosis, aneurysms and vascular malformations.</p>
       <p><b>Oesophageal cancer
-:</b> Cancers found anywhere in the oesophagus, which connects your mouth to your stomach.</p>
+          :</b> Cancers found anywhere in the oesophagus, which connects your mouth to your stomach.</p>
       <p><b>Accidental Injuries:</b> Accidents, falls, accidental drowning and submersion, exposure to smoke, fire and flames or accidental poisoning.</p>
       <p><b>Other:</b> All other causes of death considered preventable.</p>
       <p><b>Year of data:</b> 2019</p>
@@ -123,7 +165,6 @@
     [12.480474, 62.012030] // Northeast coordinates
   ];
   //-1.434713, 52.622569
-
   var map = new mapboxgl.Map({
     container: 'mapbox', // container id
     style: 'mapbox://styles/zcftssw/cknagpjwh3dm617qxeokn7amw', // style URL
@@ -135,8 +176,7 @@
 </script>
 <script type='module' src='./scripts/map.js'></script>
 <script type='module' src='./scripts/pop_up.js'></script>
-
-
+<script type='module' src='./scripts/clusters.js'></script>
 
 
 
