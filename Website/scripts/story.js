@@ -69,13 +69,32 @@ Highcharts.chart('spdChart',{
 
 /*Age*/
 $.get('https://raw.githubusercontent.com/signesw/Seeya_later/main/Website/data/age.csv', function (data) {
-
-        var lines = data.split('\n').map(function(item) {
+        var lines = data.replace(/\n/g, ",").split(",").map(function(item) {
     return parseFloat(item);
 });
+
 var lengthlines=lines.length;
-        data = lines.slice(1,lengthlines);
-        console.log(data);
+        data = lines.slice(4,lengthlines);
+
+var data1 = data.filter(function(value, index, Arr) {
+    return index % 4 == 0;
+});
+console.log(data1);
+
+var data2 = data.filter(function(value, index, Arr) {
+    return index % 4 == 1;
+});
+console.log(data2);
+
+var data3 = data.filter(function(value, index, Arr) {
+    return index % 4 == 2;
+});
+console.log(data3);
+
+var data4 = data.filter(function(value, index, Arr) {
+    return index % 4 == 3;
+});
+console.log(data4);
 
 Highcharts.chart('sAgeChart', {
     title: {
@@ -85,7 +104,7 @@ Highcharts.chart('sAgeChart', {
         title: { text: '' },
         opposite: false
     }, {
-        title: { text: 'Age Ratio' },
+        title: { text: 'Percentage of Population' },
         opposite: false
     }],
 
@@ -108,7 +127,7 @@ Highcharts.chart('sAgeChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: data1,
         id: 's1',
         marker: {
             radius: 1.5
@@ -125,7 +144,7 @@ Highcharts.chart('sAgeChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: data2,
         id: 's2',
         marker: {
             radius: 1.5
@@ -142,7 +161,7 @@ Highcharts.chart('sAgeChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: data3,
         id: 's3',
         marker: {
             radius: 1.5
@@ -159,7 +178,7 @@ Highcharts.chart('sAgeChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: data4,
         id: 's4',
         marker: {
             radius: 1.5
@@ -180,12 +199,12 @@ var lengthlines=lines.length;
 
 Highcharts.chart('sImdChart', {
     title: {
-        text: 'Distribution of Households Below 60% of the Median Income'
+        text: 'Distribution of IMD Scores in 2019'
     },
     xAxis: [{
         title: { text: ""  },
         opposite:true,
-    }, { title: { text: 'Households Below 60% of the Median Income Ratio' },
+    }, { title: { text: 'IMD Score 2019' },
         opposite:false,
 
     }],
@@ -223,13 +242,32 @@ Highcharts.chart('sImdChart', {
 
 /*Ethnicity*/
 $.get('https://raw.githubusercontent.com/signesw/Seeya_later/main/Website/data/Ethnicities.csv', function (data) {
-
-        var lines = data.split('\n').map(function(item) {
-    return parseFloat(item);
+  var lines = data.replace(/\n/g, ",").split(",").map(function(item) {
+return parseFloat(item);
 });
+
 var lengthlines=lines.length;
-        data = lines.slice(1,lengthlines);
-        console.log(data);
+  data = lines.slice(6,lengthlines);
+
+var edata1 = data.filter(function(value, index, Arr) {
+return index % 6 == 0;
+});
+console.log(edata1);
+
+var edata2 = data.filter(function(value, index, Arr) {
+return index % 6 == 1;
+});
+console.log(edata2);
+
+var edata3 = data.filter(function(value, index, Arr) {
+return index % 6 == 2;
+});
+console.log(edata3);
+
+var edata4 = data.filter(function(value, index, Arr) {
+return index % 6 == 3;
+});
+console.log(edata4);
 
 Highcharts.chart('sEthnicityChart', {
     title: {
@@ -239,7 +277,7 @@ Highcharts.chart('sEthnicityChart', {
         title: { text: '' },
         opposite: false
     }, {
-        title: { text: 'Ethnicity Ratio' },
+        title: { text: 'Percentage of Population' },
         opposite: false
     }],
 
@@ -262,13 +300,13 @@ Highcharts.chart('sEthnicityChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: edata1,
         id: 's1',
         marker: {
             radius: 1.5
         }
     },{
-        name: 'Indian',
+        name: 'Black',
         type: 'histogram',
         xAxis: 1,
         yAxis: 1,
@@ -279,13 +317,13 @@ Highcharts.chart('sEthnicityChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: edata2,
         id: 's2',
         marker: {
             radius: 1.5
         }
     },{
-        name: 'Pakistani',
+        name: 'Chinese',
         type: 'histogram',
         xAxis: 1,
         yAxis: 1,
@@ -296,13 +334,13 @@ Highcharts.chart('sEthnicityChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: edata3,
         id: 's3',
         marker: {
             radius: 1.5
         }
     },{
-        name: 'Bangladeshi',
+        name: 'Subcont',
         type: 'histogram',
         xAxis: 1,
         yAxis: 1,
@@ -313,41 +351,7 @@ Highcharts.chart('sEthnicityChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
-        id: 's4',
-        marker: {
-            radius: 1.5
-        }
-    },{
-        name: 'Chinese',
-        type: 'histogram',
-        xAxis: 1,
-        yAxis: 1,
-        baseSeries: 's4',
-        zIndex: 0
-    }, {
-        name: 'Data',
-        visible: false,
-        showInLegend: false,
-       // type: 'scatter',
-        data: data,
-        id: 's4',
-        marker: {
-            radius: 1.5
-        }
-    },{
-        name: 'Black',
-        type: 'histogram',
-        xAxis: 1,
-        yAxis: 1,
-        baseSeries: 's4',
-        zIndex: 0
-    }, {
-        name: 'Data',
-        visible: false,
-        showInLegend: false,
-       // type: 'scatter',
-        data: data,
+        data: edata4,
         id: 's4',
         marker: {
             radius: 1.5
