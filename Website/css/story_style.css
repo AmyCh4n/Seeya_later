@@ -332,12 +332,12 @@ input[type='radio']:checked ~label {
 /*----------------------------------Story page----------------------------------------*/
 .storycontainer{
   color:white;
-  padding: 5% 4% 0 4%;
+  max-width: 100%;
 }
 
 #stitle{
   text-align:center;
-  padding: 70px 5px 50px 5px;
+  padding: 70px 5px 20px 50px;
   width:100%;
 }
 
@@ -348,9 +348,10 @@ input[type='radio']:checked ~label {
 }
 
 .stxt{
-  display: 100%;
+  display: block;
+  max-width: 100%;
   column-count: 2;
-  padding: 50px 5px 30px 5px;
+  padding: 50px 50px 30px 50px;
 }
 
 .stxtr{
@@ -367,7 +368,7 @@ input[type='radio']:checked ~label {
 
 /*Collapsible Menu*/
 .collapsible{
-  background-color: #161A39;
+  background-color: #35478C;
   color: white;
   cursor: pointer;
   padding: 18px;
