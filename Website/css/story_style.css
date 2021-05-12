@@ -342,7 +342,7 @@ input[type='radio']:checked ~label {
 }
 
 .shtxt{
-  text-align:left;
+  text-align:center;
   padding: 50px 5px 30px 5px;
   width:100%;
 }
@@ -397,9 +397,7 @@ input[type='radio']:checked ~label {
 /*Data Sources*/
 .sdsimgcontainer{
   display: 100%;
-  column-count: 2;
-  float: center;
-  padding-bottom: 70px;
+  padding-bottom: 50px;
 }
 
 .sdsimgcontainer figure img{
