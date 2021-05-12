@@ -24,26 +24,53 @@ var lengthlines=lines.length;
         data = lines.slice(1,lengthlines);
         console.log(data);
 
-Highcharts.chart('spdChart',{
+const pdchart = Highcharts.chart('spdChart',{
+  chart: {
+    backgroundColor: 'rgba(255,255,255, 0.1)',
+    type: 'histogram',
+    style: {
+      fontFamily: "\"Poppins\", sans-serif"
+    }
+  },
     title: {
-        text: 'Distribution of Preventable Deaths'
+      style: {
+        color: '#ffff'
+      },
+      text: 'Distribution of Preventable Deaths'
     },
     xAxis: [{
         title: { text: ""  },
         opposite:true,
-    }, { title: { text: 'Mortality Ratio' },
+    }, { title: { text: 'Mortality Ratio',
+        style:{
+          color: '#ffff',
+        }},
         opposite:false,
-
-    }],
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+        },
+      }],
 
     yAxis: [{
         title: { text: '' }
     }, {
-        title: { text: 'Count of MSOAs' },
-        opposite: false
+        title: { text: 'Count of MSOAs',
+        style: {
+          color: '#ffff'
+        },
+      },
+        opposite: false,
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+        },
     }],
 
     series: [{
+    borderColor: '#ffff',
     showInLegend:false,
         name: 'Count of MSOAs',
         type: 'histogram',
@@ -51,7 +78,6 @@ Highcharts.chart('spdChart',{
         yAxis: 1,
         baseSeries: 's1',
         zIndex: 0,
-
     }, {
         name: 'Data',
         visible: false,
@@ -96,24 +122,62 @@ var data4 = data.filter(function(value, index, Arr) {
 });
 console.log(data4);
 
-Highcharts.chart('sAgeChart', {
+const achart = Highcharts.chart('sAgeChart', {
+    chart: {
+      backgroundColor: 'rgba(255,255,255, 0.1)',
+      type: 'histogram',
+      style: {
+        fontFamily: "\"Poppins\", sans-serif"
+      }
+    },
+    legend:{
+      itemStyle:{
+        color: '#ffff'
+      }
+    },
     title: {
-        text: 'Distribution of People by Age'
+      style: {
+        color: '#ffff'
+      },
+      text: 'Distribution of People by Age'
     },
     xAxis: [{
         title: { text: '' },
         opposite: false
     }, {
-        title: { text: 'Percentage of Population' },
-        opposite: false
+        title: { text: 'Percentage of Population',
+        style:{
+          color: '#ffff',
+        }},
+        opposite:false,
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+        },
     }],
 
     yAxis: [{
         title: { text: '' }
     }, {
-        title: { text: 'Count of MSOAs' },
-        opposite: false
+        title: { text: 'Count of MSOAs',
+        style: {
+          color: '#ffff'
+        },
+      },
+        opposite: false,
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+        },
     }],
+
+    plotOptions: {
+        series: {
+            borderColor: '#ffff'
+        }
+    },
 
     series: [{
         name: '0-15',
@@ -197,26 +261,53 @@ var lengthlines=lines.length;
         data = lines.slice(1,lengthlines);
         console.log(data);
 
-Highcharts.chart('sImdChart', {
+const imdchart =Highcharts.chart('sImdChart', {
+    chart: {
+      backgroundColor: 'rgba(255,255,255, 0.1)',
+      type: 'histogram',
+      style: {
+        fontFamily: "\"Poppins\", sans-serif"
+      }
+    },
     title: {
-        text: 'Distribution of IMD Scores in 2019'
+      style: {
+        color: '#ffff'
+      },
+      text: 'Distribution of IMD Scores in 2019'
     },
     xAxis: [{
         title: { text: ""  },
         opposite:true,
-    }, { title: { text: 'IMD Score 2019' },
+    }, { title: { text: 'IMD Score 2019',
+        style:{
+          color: '#ffff',
+        }},
         opposite:false,
-
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+    },
     }],
 
     yAxis: [{
         title: { text: '' }
     }, {
-        title: { text: 'Count of MSOAs' },
-        opposite: false
+        title: { text: 'Count of MSOAs',
+        style: {
+          color: '#ffff'
+        },
+      },
+        opposite: false,
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+        },
     }],
 
     series: [{
+    borderColor: '#ffff',
     showInLegend:false,
         name: 'Count of MSOAs',
         type: 'histogram',
@@ -252,41 +343,80 @@ var lengthlines=lines.length;
 var edata1 = data.filter(function(value, index, Arr) {
 return index % 6 == 0;
 });
-console.log(edata1);
 
 var edata2 = data.filter(function(value, index, Arr) {
 return index % 6 == 1;
 });
-console.log(edata2);
 
 var edata3 = data.filter(function(value, index, Arr) {
 return index % 6 == 2;
 });
-console.log(edata3);
 
 var edata4 = data.filter(function(value, index, Arr) {
 return index % 6 == 3;
 });
-console.log(edata4);
 
-Highcharts.chart('sEthnicityChart', {
+const ethchart =Highcharts.chart('sEthnicityChart', {
+    chart: {
+      backgroundColor: 'rgba(255,255,255, 0.1)',
+      type: 'histogram',
+      style: {
+        fontFamily: "\"Poppins\", sans-serif"
+      }
+    },
+    legend:{
+      itemStyle:{
+        color: '#ffff'
+      }
+    },
     title: {
-        text: 'Distribution of People by Ethnicity'
+      style: {
+        color: '#ffff'
+      },
+      text: 'Distribution of People by Ethnicity'
     },
     xAxis: [{
         title: { text: '' },
         opposite: false
     }, {
-        title: { text: 'Percentage of Population' },
-        opposite: false
+        title: { text: 'Percentage of Population',
+        style:{
+          color: '#ffff',
+        }},
+        opposite:false,
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+       },
     }],
 
     yAxis: [{
         title: { text: '' }
     }, {
-        title: { text: 'Count of MSOAs' },
-        opposite: false
+        title: { text: 'Count of MSOAs',
+        style: {
+          color: '#ffff'
+        },
+      },
+        opposite: false,
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+        },
     }],
+
+    plotOptions: {
+        series: {
+            borderColor: '#ffff',
+            labels:{
+              style:{
+                color:'#ffff',
+              }
+            }
+        }
+    },
 
     series: [{
         name: 'White',
