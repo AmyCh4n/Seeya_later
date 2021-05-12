@@ -335,6 +335,7 @@ input[type='radio']:checked ~label {
   max-width: 100%;
 }
 
+/*Text styles*/
 #stitle{
   text-align:center;
   padding: 70px 5px 20px 50px;
@@ -393,7 +394,24 @@ input[type='radio']:checked ~label {
   padding-bottom: 50px;
 }
 
-/*Containers*/
+/*Container positioning*/
+.positionLeft{
+  width: 50%;
+  float: left;
+  padding: 20px;
+}
+.positionRight{
+  width: 50%;
+  float: right;
+  padding: 20px;
+}
+
+/*Spacer*/
+.emptyBottom{
+  height: 50px;
+}
+
+/*Story Containers*/
 /*Data Sources*/
 .sdsimgcontainer{
   display: 100%;
@@ -442,18 +460,6 @@ input[type='radio']:checked ~label {
   margin: 1em auto;
 }
 
-/*positionLeft & positionRight*/
-.positionLeft{
-  width: 50%;
-  float: left;
-  padding: 20px;
-}
-.positionRight{
-  width: 50%;
-  float: right;
-  padding: 20px;
-}
-
 /*Socioeconomic Indicators*/
 #sseiimgcontainer{
   padding: 20px;
@@ -482,10 +488,6 @@ input[type='radio']:checked ~label {
 #saimgcontainer{
   padding: 20px;
   height: auto;
-}
-
-.emptyBottom{
-  height: 50px;
 }
 
 /*----------------------------------Footer----------------------------------------*/
