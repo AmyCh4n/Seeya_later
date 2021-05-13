@@ -1,7 +1,7 @@
 /*------------------------Home Page-------------------------------*/
 html, body, #fullheight {
   min-height: 100vh !important;
-  height: 100%;
+  height: auto;
 }
 footer {
   bottom:0;
@@ -24,7 +24,7 @@ body {
 * {
   padding: 0;
   margin: 0;
-  oration: none;
+  text-decoration: none;
   list-style: none;
   box-sizing: border-box;
 }
@@ -182,12 +182,9 @@ nav a:hover {
   text-align: center;
   color: white;
   font-size: 25px;
-  line-height: 3;
-  padding:10px
-}
-
-u{
-  text-decoration: underline;
+  line-height: 2;
+  padding-top:50px;
+  padding-bottom:10px
 }
 
 /*general features*/
@@ -313,7 +310,7 @@ u{
 
 .aboutcontainer {
   text-align: justify;
-  padding: 3% 4% 4% 4%;
+  padding: 50px;
   width: 100%;
   height: auto%;
 }
@@ -385,7 +382,7 @@ blockquote{
 #aboutustext {
   width: 45%;
   height: 50%;
-  margin-top: 2%;
+  margin-top: 1%;
 }
 
 .aboutnames {
