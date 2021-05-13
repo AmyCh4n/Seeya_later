@@ -224,6 +224,7 @@ nav a:hover {
   width: 70%;
   text-align: center;
   vertical-align: middle;
+  padding-left: 10px;
 }
 
 .feature1 {
@@ -250,6 +251,7 @@ nav a:hover {
   width: 70%;
   text-align: center;
   vertical-align: middle;
+  padding-right: 10px;
 }
 
 #feature2img {
@@ -282,6 +284,7 @@ nav a:hover {
   width: 70%;
   text-align: center;
   vertical-align: middle;
+  padding-left: 10px;
 }
 
 #feature3img {
@@ -1008,7 +1011,7 @@ input[type='radio']:checked~label {
 
 /*Spacer*/
 .emptyBottom {
-  height: 50px;
+  height: 30px;
 }
 
 /*Story Containers*/

@@ -27,6 +27,7 @@ for (i = 0; i < coll.length; i++) {
 }*/
 
 /*Preventable Deaths*/
+/*Read in data and process*/
 $.get('https://raw.githubusercontent.com/signesw/Seeya_later/main/Website/data/deaths.csv', function (data) {
 
         var lines = data.split('\n').map(function(item) {
@@ -34,8 +35,8 @@ $.get('https://raw.githubusercontent.com/signesw/Seeya_later/main/Website/data/d
 });
 var lengthlines=lines.length;
         data = lines.slice(1,lengthlines);
-        console.log(data);
 
+/*Draw graph*/
 const pdchart = Highcharts.chart('spdChart',{
   chart: {
     backgroundColor: 'rgba(255,255,255, 0.1)',
@@ -81,6 +82,19 @@ const pdchart = Highcharts.chart('spdChart',{
         },
     }],
 
+    plotOptions:{
+      series:{
+        color: '#D47500'
+      }
+    },
+
+    tooltip: {
+      pointFormat:  `<span style="font-size:10px">{point.x:.2f} - {point.x2:.2f}
+                    </span><br/>
+                    <span style="color:{point.color}">\u25CF</span>
+                    {series.name} <b>{point.y}</b><br/>`
+    },
+
     series: [{
     borderColor: '#ffff',
     showInLegend:false,
@@ -106,34 +120,33 @@ const pdchart = Highcharts.chart('spdChart',{
 })
 
 /*Age*/
+/*Read in data and process*/
 $.get('https://raw.githubusercontent.com/signesw/Seeya_later/main/Website/data/age.csv', function (data) {
         var lines = data.replace(/\n/g, ",").split(",").map(function(item) {
     return parseFloat(item);
 });
 
+/*Make arrays*/
 var lengthlines=lines.length;
         data = lines.slice(4,lengthlines);
 
 var data1 = data.filter(function(value, index, Arr) {
     return index % 4 == 0;
 });
-console.log(data1);
 
 var data2 = data.filter(function(value, index, Arr) {
     return index % 4 == 1;
 });
-console.log(data2);
 
 var data3 = data.filter(function(value, index, Arr) {
     return index % 4 == 2;
 });
-console.log(data3);
 
 var data4 = data.filter(function(value, index, Arr) {
     return index % 4 == 3;
 });
-console.log(data4);
 
+/*Draw graph*/
 const achart = Highcharts.chart('sAgeChart', {
     chart: {
       backgroundColor: 'rgba(255,255,255, 0.1)',
@@ -187,8 +200,15 @@ const achart = Highcharts.chart('sAgeChart', {
 
     plotOptions: {
         series: {
-            borderColor: '#ffff'
+            borderColor: '#ffff',
         }
+    },
+
+    tooltip: {
+      pointFormat:  `<span style="font-size:10px">{point.x:.2f} - {point.x2:.2f}
+                    </span><br/>
+                    <span style="color:{point.color}">\u25CF</span>
+                    {series.name} <b>{point.y}</b><br/>`
     },
 
     series: [{
@@ -197,7 +217,8 @@ const achart = Highcharts.chart('sAgeChart', {
         xAxis: 1,
         yAxis: 1,
         baseSeries: 's1',
-        zIndex: 0
+        zIndex: 0,
+        color: '#00AA55'
     }, {
         name: 'Data',
         visible: false,
@@ -264,6 +285,7 @@ const achart = Highcharts.chart('sAgeChart', {
 })
 
 /*IMD 2019*/
+/*Read in data and process*/
 $.get('https://raw.githubusercontent.com/signesw/Seeya_later/main/Website/data/IMD2019.csv', function (data) {
 
         var lines = data.split('\n').map(function(item) {
@@ -271,8 +293,8 @@ $.get('https://raw.githubusercontent.com/signesw/Seeya_later/main/Website/data/I
 });
 var lengthlines=lines.length;
         data = lines.slice(1,lengthlines);
-        console.log(data);
 
+/*Draw graph*/
 const imdchart =Highcharts.chart('sImdChart', {
     chart: {
       backgroundColor: 'rgba(255,255,255, 0.1)',
@@ -318,6 +340,19 @@ const imdchart =Highcharts.chart('sImdChart', {
         },
     }],
 
+    plotOptions:{
+      series:{
+        color: '#D47500'
+      }
+    },
+
+    tooltip: {
+      pointFormat:  `<span style="font-size:10px">{point.x:.2f} - {point.x2:.2f}
+                    </span><br/>
+                    <span style="color:{point.color}">\u25CF</span>
+                    {series.name} <b>{point.y}</b><br/>`
+    },
+
     series: [{
     borderColor: '#ffff',
     showInLegend:false,
@@ -344,11 +379,13 @@ const imdchart =Highcharts.chart('sImdChart', {
 })
 
 /*Ethnicity*/
+/*Read in data and process*/
 $.get('https://raw.githubusercontent.com/signesw/Seeya_later/main/Website/data/Ethnicities.csv', function (data) {
   var lines = data.replace(/\n/g, ",").split(",").map(function(item) {
 return parseFloat(item);
 });
 
+/*Make arrays*/
 var lengthlines=lines.length;
   data = lines.slice(6,lengthlines);
 
@@ -368,6 +405,7 @@ var edata4 = data.filter(function(value, index, Arr) {
 return index % 6 == 3;
 });
 
+ /*Draw graph*/
 const ethchart =Highcharts.chart('sEthnicityChart', {
     chart: {
       backgroundColor: 'rgba(255,255,255, 0.1)',
@@ -430,13 +468,21 @@ const ethchart =Highcharts.chart('sEthnicityChart', {
         }
     },
 
+    tooltip: {
+      pointFormat:  `<span style="font-size:10px">{point.x:.2f} - {point.x2:.2f}
+                    </span><br/>
+                    <span style="color:{point.color}">\u25CF</span>
+                    {series.name} <b>{point.y}</b><br/>`
+    },
+
     series: [{
         name: 'White',
         type: 'histogram',
         xAxis: 1,
         yAxis: 1,
         baseSeries: 's1',
-        zIndex: 0
+        zIndex: 0,
+        color: '#009FD4'
     }, {
         name: 'Data',
         visible: false,
