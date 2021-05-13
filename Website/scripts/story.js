@@ -81,6 +81,12 @@ const pdchart = Highcharts.chart('spdChart',{
         },
     }],
 
+    plotOptions:{
+      series:{
+        color: '#D47500'
+      }
+    },
+
     series: [{
     borderColor: '#ffff',
     showInLegend:false,
@@ -187,7 +193,7 @@ const achart = Highcharts.chart('sAgeChart', {
 
     plotOptions: {
         series: {
-            borderColor: '#ffff'
+            borderColor: '#ffff',
         }
     },
 
@@ -197,7 +203,8 @@ const achart = Highcharts.chart('sAgeChart', {
         xAxis: 1,
         yAxis: 1,
         baseSeries: 's1',
-        zIndex: 0
+        zIndex: 0,
+        color: '#00AA55'
     }, {
         name: 'Data',
         visible: false,
@@ -318,6 +325,12 @@ const imdchart =Highcharts.chart('sImdChart', {
         },
     }],
 
+    plotOptions:{
+      series:{
+        color: '#D47500'
+      }
+    },
+
     series: [{
     borderColor: '#ffff',
     showInLegend:false,
@@ -436,7 +449,8 @@ const ethchart =Highcharts.chart('sEthnicityChart', {
         xAxis: 1,
         yAxis: 1,
         baseSeries: 's1',
-        zIndex: 0
+        zIndex: 0,
+        color: '#009FD4'
     }, {
         name: 'Data',
         visible: false,
