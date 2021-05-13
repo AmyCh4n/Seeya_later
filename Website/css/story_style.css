@@ -332,25 +332,27 @@ input[type='radio']:checked ~label {
 /*----------------------------------Story page----------------------------------------*/
 .storycontainer{
   color:white;
-  padding: 5% 4% 0 4%;
+  max-width: 100%;
 }
 
+/*Text styles*/
 #stitle{
   text-align:center;
-  padding: 70px 5px 50px 5px;
+  padding: 70px 5px 20px 50px;
   width:100%;
 }
 
 .shtxt{
-  text-align:left;
+  text-align:center;
   padding: 50px 5px 30px 5px;
   width:100%;
 }
 
 .stxt{
-  display: 100%;
+  display: block;
+  max-width: 100%;
   column-count: 2;
-  padding: 50px 5px 30px 5px;
+  padding: 50px 50px 30px 50px;
 }
 
 .stxtr{
@@ -367,7 +369,7 @@ input[type='radio']:checked ~label {
 
 /*Collapsible Menu*/
 .collapsible{
-  background-color: #161A39;
+  background-color: #35478C;
   color: white;
   cursor: pointer;
   padding: 18px;
@@ -392,18 +394,33 @@ input[type='radio']:checked ~label {
   padding-bottom: 50px;
 }
 
-/*Containers*/
+/*Container positioning*/
+.positionLeft{
+  width: 50%;
+  float: left;
+  padding: 20px;
+}
+.positionRight{
+  width: 50%;
+  float: right;
+  padding: 20px;
+}
+
+/*Spacer*/
+.emptyBottom{
+  height: 50px;
+}
+
+/*Story Containers*/
 /*Data Sources*/
 .sdsimgcontainer{
   display: 100%;
-  column-count: 2;
-  float: center;
-  padding-bottom: 70px;
+  padding-bottom: 50px;
 }
 
 .sdsimgcontainer figure img{
-  width:220px;
-  height:120px;
+  width:180px;
+  height:100px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -443,18 +460,6 @@ input[type='radio']:checked ~label {
   margin: 1em auto;
 }
 
-/*positionLeft & positionRight*/
-.positionLeft{
-  width: 50%;
-  float: left;
-  padding: 20px;
-}
-.positionRight{
-  width: 50%;
-  float: right;
-  padding: 20px;
-}
-
 /*Socioeconomic Indicators*/
 #sseiimgcontainer{
   padding: 20px;
@@ -483,10 +488,6 @@ input[type='radio']:checked ~label {
 #saimgcontainer{
   padding: 20px;
   height: auto;
-}
-
-.emptyBottom{
-  height: 50px;
 }
 
 /*----------------------------------Footer----------------------------------------*/

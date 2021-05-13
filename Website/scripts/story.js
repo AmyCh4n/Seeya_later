@@ -24,26 +24,53 @@ var lengthlines=lines.length;
         data = lines.slice(1,lengthlines);
         console.log(data);
 
-Highcharts.chart('spdChart',{
+const pdchart = Highcharts.chart('spdChart',{
+  chart: {
+    backgroundColor: 'rgba(255,255,255, 0.1)',
+    type: 'histogram',
+    style: {
+      fontFamily: "\"Poppins\", sans-serif"
+    }
+  },
     title: {
-        text: 'Distribution of Preventable Deaths'
+      style: {
+        color: '#ffff'
+      },
+      text: 'Distribution of Preventable Deaths'
     },
     xAxis: [{
         title: { text: ""  },
         opposite:true,
-    }, { title: { text: 'Mortality Ratio' },
+    }, { title: { text: 'Mortality Ratio',
+        style:{
+          color: '#ffff',
+        }},
         opposite:false,
-
-    }],
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+        },
+      }],
 
     yAxis: [{
         title: { text: '' }
     }, {
-        title: { text: 'Count of MSOAs' },
-        opposite: false
+        title: { text: 'Count of MSOAs',
+        style: {
+          color: '#ffff'
+        },
+      },
+        opposite: false,
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+        },
     }],
 
     series: [{
+    borderColor: '#ffff',
     showInLegend:false,
         name: 'Count of MSOAs',
         type: 'histogram',
@@ -51,7 +78,6 @@ Highcharts.chart('spdChart',{
         yAxis: 1,
         baseSeries: 's1',
         zIndex: 0,
-
     }, {
         name: 'Data',
         visible: false,
@@ -69,32 +95,89 @@ Highcharts.chart('spdChart',{
 
 /*Age*/
 $.get('https://raw.githubusercontent.com/signesw/Seeya_later/main/Website/data/age.csv', function (data) {
-
-        var lines = data.split('\n').map(function(item) {
+        var lines = data.replace(/\n/g, ",").split(",").map(function(item) {
     return parseFloat(item);
 });
-var lengthlines=lines.length;
-        data = lines.slice(1,lengthlines);
-        console.log(data);
 
-Highcharts.chart('sAgeChart', {
+var lengthlines=lines.length;
+        data = lines.slice(4,lengthlines);
+
+var data1 = data.filter(function(value, index, Arr) {
+    return index % 4 == 0;
+});
+console.log(data1);
+
+var data2 = data.filter(function(value, index, Arr) {
+    return index % 4 == 1;
+});
+console.log(data2);
+
+var data3 = data.filter(function(value, index, Arr) {
+    return index % 4 == 2;
+});
+console.log(data3);
+
+var data4 = data.filter(function(value, index, Arr) {
+    return index % 4 == 3;
+});
+console.log(data4);
+
+const achart = Highcharts.chart('sAgeChart', {
+    chart: {
+      backgroundColor: 'rgba(255,255,255, 0.1)',
+      type: 'histogram',
+      style: {
+        fontFamily: "\"Poppins\", sans-serif"
+      }
+    },
+    legend:{
+      itemStyle:{
+        color: '#ffff'
+      }
+    },
     title: {
-        text: 'Distribution of People by Age'
+      style: {
+        color: '#ffff'
+      },
+      text: 'Distribution of People by Age'
     },
     xAxis: [{
         title: { text: '' },
         opposite: false
     }, {
-        title: { text: 'Age Ratio' },
-        opposite: false
+        title: { text: 'Percentage of Population',
+        style:{
+          color: '#ffff',
+        }},
+        opposite:false,
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+        },
     }],
 
     yAxis: [{
         title: { text: '' }
     }, {
-        title: { text: 'Count of MSOAs' },
-        opposite: false
+        title: { text: 'Count of MSOAs',
+        style: {
+          color: '#ffff'
+        },
+      },
+        opposite: false,
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+        },
     }],
+
+    plotOptions: {
+        series: {
+            borderColor: '#ffff'
+        }
+    },
 
     series: [{
         name: '0-15',
@@ -108,7 +191,7 @@ Highcharts.chart('sAgeChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: data1,
         id: 's1',
         marker: {
             radius: 1.5
@@ -125,7 +208,7 @@ Highcharts.chart('sAgeChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: data2,
         id: 's2',
         marker: {
             radius: 1.5
@@ -142,7 +225,7 @@ Highcharts.chart('sAgeChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: data3,
         id: 's3',
         marker: {
             radius: 1.5
@@ -159,7 +242,7 @@ Highcharts.chart('sAgeChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: data4,
         id: 's4',
         marker: {
             radius: 1.5
@@ -178,26 +261,53 @@ var lengthlines=lines.length;
         data = lines.slice(1,lengthlines);
         console.log(data);
 
-Highcharts.chart('sImdChart', {
+const imdchart =Highcharts.chart('sImdChart', {
+    chart: {
+      backgroundColor: 'rgba(255,255,255, 0.1)',
+      type: 'histogram',
+      style: {
+        fontFamily: "\"Poppins\", sans-serif"
+      }
+    },
     title: {
-        text: 'Distribution of Households Below 60% of the Median Income'
+      style: {
+        color: '#ffff'
+      },
+      text: 'Distribution of IMD Scores in 2019'
     },
     xAxis: [{
         title: { text: ""  },
         opposite:true,
-    }, { title: { text: 'Households Below 60% of the Median Income Ratio' },
+    }, { title: { text: 'IMD Score 2019',
+        style:{
+          color: '#ffff',
+        }},
         opposite:false,
-
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+    },
     }],
 
     yAxis: [{
         title: { text: '' }
     }, {
-        title: { text: 'Count of MSOAs' },
-        opposite: false
+        title: { text: 'Count of MSOAs',
+        style: {
+          color: '#ffff'
+        },
+      },
+        opposite: false,
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+        },
     }],
 
     series: [{
+    borderColor: '#ffff',
     showInLegend:false,
         name: 'Count of MSOAs',
         type: 'histogram',
@@ -223,32 +333,90 @@ Highcharts.chart('sImdChart', {
 
 /*Ethnicity*/
 $.get('https://raw.githubusercontent.com/signesw/Seeya_later/main/Website/data/Ethnicities.csv', function (data) {
-
-        var lines = data.split('\n').map(function(item) {
-    return parseFloat(item);
+  var lines = data.replace(/\n/g, ",").split(",").map(function(item) {
+return parseFloat(item);
 });
-var lengthlines=lines.length;
-        data = lines.slice(1,lengthlines);
-        console.log(data);
 
-Highcharts.chart('sEthnicityChart', {
+var lengthlines=lines.length;
+  data = lines.slice(6,lengthlines);
+
+var edata1 = data.filter(function(value, index, Arr) {
+return index % 6 == 0;
+});
+
+var edata2 = data.filter(function(value, index, Arr) {
+return index % 6 == 1;
+});
+
+var edata3 = data.filter(function(value, index, Arr) {
+return index % 6 == 2;
+});
+
+var edata4 = data.filter(function(value, index, Arr) {
+return index % 6 == 3;
+});
+
+const ethchart =Highcharts.chart('sEthnicityChart', {
+    chart: {
+      backgroundColor: 'rgba(255,255,255, 0.1)',
+      type: 'histogram',
+      style: {
+        fontFamily: "\"Poppins\", sans-serif"
+      }
+    },
+    legend:{
+      itemStyle:{
+        color: '#ffff'
+      }
+    },
     title: {
-        text: 'Distribution of People by Ethnicity'
+      style: {
+        color: '#ffff'
+      },
+      text: 'Distribution of People by Ethnicity'
     },
     xAxis: [{
         title: { text: '' },
         opposite: false
     }, {
-        title: { text: 'Ethnicity Ratio' },
-        opposite: false
+        title: { text: 'Percentage of Population',
+        style:{
+          color: '#ffff',
+        }},
+        opposite:false,
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+       },
     }],
 
     yAxis: [{
         title: { text: '' }
     }, {
-        title: { text: 'Count of MSOAs' },
-        opposite: false
+        title: { text: 'Count of MSOAs',
+        style: {
+          color: '#ffff'
+        },
+      },
+        opposite: false,
+        labels: {
+          style: {
+            color: '#ffff',
+          }
+        },
     }],
+
+    plotOptions: {
+        series: {
+            borderColor: '#ffff',
+            labels:{
+              style:{
+                color:'#ffff',
+              }
+            }
+        }
+    },
 
     series: [{
         name: 'White',
@@ -262,13 +430,13 @@ Highcharts.chart('sEthnicityChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: edata1,
         id: 's1',
         marker: {
             radius: 1.5
         }
     },{
-        name: 'Indian',
+        name: 'Black',
         type: 'histogram',
         xAxis: 1,
         yAxis: 1,
@@ -279,13 +447,13 @@ Highcharts.chart('sEthnicityChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: edata2,
         id: 's2',
         marker: {
             radius: 1.5
         }
     },{
-        name: 'Pakistani',
+        name: 'Chinese',
         type: 'histogram',
         xAxis: 1,
         yAxis: 1,
@@ -296,13 +464,13 @@ Highcharts.chart('sEthnicityChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
+        data: edata3,
         id: 's3',
         marker: {
             radius: 1.5
         }
     },{
-        name: 'Bangladeshi',
+        name: 'Subcont',
         type: 'histogram',
         xAxis: 1,
         yAxis: 1,
@@ -313,41 +481,7 @@ Highcharts.chart('sEthnicityChart', {
         visible: false,
         showInLegend: false,
        // type: 'scatter',
-        data: data,
-        id: 's4',
-        marker: {
-            radius: 1.5
-        }
-    },{
-        name: 'Chinese',
-        type: 'histogram',
-        xAxis: 1,
-        yAxis: 1,
-        baseSeries: 's4',
-        zIndex: 0
-    }, {
-        name: 'Data',
-        visible: false,
-        showInLegend: false,
-       // type: 'scatter',
-        data: data,
-        id: 's4',
-        marker: {
-            radius: 1.5
-        }
-    },{
-        name: 'Black',
-        type: 'histogram',
-        xAxis: 1,
-        yAxis: 1,
-        baseSeries: 's4',
-        zIndex: 0
-    }, {
-        name: 'Data',
-        visible: false,
-        showInLegend: false,
-       // type: 'scatter',
-        data: data,
+        data: edata4,
         id: 's4',
         marker: {
             radius: 1.5

@@ -280,43 +280,28 @@ nav ul li a:hover{
 
 .aboutcontainer {
   text-align: justify;
-  padding: 5% 4% 0 4%;
+  padding: 3% 4% 0 4%;
   width: 100%;
-  height: 60%;
-}
-
-.abouttext {
-	margin-right: 15%;
-	color: white;
+  height: 50%;
 }
 
 .eleni blockquote{
-	margin-right: 10%;
-	margin-left:13%;
 	color: white;
 }
 
 .signe blockquote{
-	margin-right: 10%;
-	margin-left:5%;
 	color: white;
 }
 
 .amy blockquote{
-	margin-right: 10%;
-	margin-left:5%;
 	color: white;
 }
 
 .yasmine blockquote{
-	margin-right: 10%;
-	margin-left:5%;
 	color: white;
 }
 
 .emmanuel blockquote{
-	margin-right: 5%;
-	margin-left:5%;
 	color: white;
 }
 
@@ -327,38 +312,43 @@ nav ul li a:hover{
 }
 
 .aboutuspicturescontainer {
-  width: 150%;
+  width: 170%;
   display: flex;
-  justify-content: space-around;
-}
 
+  margin-top:2%;
+}
 
 .aboutus {
   width: 100%;
-}
-
-.aboutus {
   top: 120%;
+  margin-top: 2%;
 }
 
-/* paragraph text */
 .aboutpage {
   color: #ffffff;
 }
 
+.abouttext {
+	color: #F27405;
+	font-size: 36px;
+	margin-bottom: 5%;
+}
+.textBox blockquote {
+	color: white;
+	margin-right:10%;
+}
+
 #aboutustext {
-  width: 45%
+  width: 45%;
+  height:50%;
+  margin-top: 2%;
 }
 
 .aboutnames {
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  margin-block-start: 0;
-}
-
-#aboutustitle {
-	color: #F27405;
+  color:white;
 }
 
 #contactus {
@@ -367,16 +357,17 @@ nav ul li a:hover{
 	white-space: nowrap;
 }
 
-#aboutustext {
-	margin-top: 1%;
-}
-
 #eleni, #signe, #amy, #yasmine, #emmanuel {
   height: 150px;
   width: 150px;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+.eleni, .signe, .amy, .yasmine, .emmanuel {
+  height: 100%;
+  width: 100%;
+  padding: 15px;
 }
 
 #aboutemail {
@@ -390,7 +381,6 @@ nav ul li a:hover{
   margin-top: 5%;
 }
 
-
 #aboutpage a:hover img {
   opacity: 0.6;
   background-color: none;
@@ -400,10 +390,12 @@ nav ul li a:hover{
   color: #f27405;
 }
 
+/*message form*/
+
 .frame{
 	width: 600px;
 	height: 350px;
-	margin: 150px auto 0;
+	margin: 270px auto 0;
 	position: relative;
 	background: #435d77;
 	border-radius:0 0 40px 40px;
@@ -583,8 +575,6 @@ input:required:valid,textarea:required:valid {
 		transition: 1s ease-in-out;
 	}
 }
-
-
 
 
 /*----------------------------------Visualisation page----------------------------------------*/
