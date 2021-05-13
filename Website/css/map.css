@@ -351,31 +351,31 @@ input[type='radio']:checked ~label {
 }
 
 #Cluster1{
-  		background-color: #40e0d0;
+  		background-color:#D47500;
   }
 
 #Cluster2{
-  background-color: #fa8072;
+  background-color: #009FD4;
 }
 
 #Cluster3{
-  		background-color: #daa520;
+  		background-color:#B381B3;
   }
 
 #Cluster4{
-  		background-color: #2e8b57;
+  		background-color: #00AA55;
   }
 
 #Cluster5{
-  		background-color: #f4a460;
+  		background-color:#AA0000;
   }
 
 #Cluster6{
-  		background-color: #d8bfd8;
+  		background-color: #939393;
   }
 
 #Cluster7{
-  		background-color: #a9a9a9;
+  		background-color: #A74165;
   }
 
 
@@ -546,11 +546,11 @@ cursor: pointer;
 }
 
 ::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
- background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(112, 112, 112)'><polygon points='50,00 0,50 100,50'/></svg>");
+ background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(255,165,0))'><polygon points='50,00 0,50 100,50'/></svg>");
 }
 
 ::-webkit-scrollbar-button:single-button:vertical:decrement:active {
- background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(112, 112, 112)'><polygon points='50,00 0,50 100,50'/></svg>");
+ background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(255,165,0))'><polygon points='50,00 0,50 100,50'/></svg>");
 }
 
 /* Down */
@@ -562,5 +562,9 @@ cursor: pointer;
 }
 
 ::-webkit-scrollbar-button:single-button:vertical:increment:hover {
- background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(112, 112, 112)'><polygon points='0,0 100,0 50,50'/></svg>");
+ background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(255,165,0))'><polygon points='0,0 100,0 50,50'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment:active {
+ background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(255,165,0))'><polygon points='0,0 100,0 50,50'/></svg>");
 }

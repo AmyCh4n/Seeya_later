@@ -51,12 +51,12 @@ nav ul li a{
   text-transform: uppercase;
 }
 
-a.active {
+nav a.active {
   background: #F27405;
-  transition: .5s;
+  transition: .10s;
 }
 
-a:hover{
+nav a:hover{
   color: #F27405;
   transition: .5s;
 }

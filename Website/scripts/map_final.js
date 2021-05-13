@@ -345,7 +345,7 @@ map.on('load', function() {
         104.70,
         '#F24405',
         132.20,
-        '#F20505'
+        '#B70109'
       ], // orange color fill
       'fill-opacity': [
         'case',
@@ -396,13 +396,13 @@ map.on('load', function() {
         'fill-color':
         ['match',
         ['get', 'KMeans7'],
-        0,'#40e0d0',
-    1, '#fa8072',
-    2, '#daa520',
-    3, '#2e8b57',
-    4, '#f4a460',
-    5, '#d8bfd8',
-    6, '#a9a9a9',
+        0,'#D47500',
+    1, '#009FD4',
+    2, '#B381B3',
+    3, '#00AA55',
+    4, '#AA0000',
+    5, '#939393',
+    6, '#A74165',
     /*other*/ '#ffffff'
     ],
         'fill-opacity': [
@@ -602,8 +602,10 @@ function DisplayLayer() {
     //Reset variables
     click="";
     click_clusters="";
+    close_button();
     ShowClickedMSOAName();
     ShowClickedMSOA();
+
   });
   $('#Clusters').click(function() {
     if ($(this).is(':checked')) {
@@ -618,6 +620,7 @@ function DisplayLayer() {
     //Reset variables
     click="";
     click_clusters="";
+    close_button();
     ShowClickedMSOAName();
     ShowClickedMSOA();
   });
@@ -637,6 +640,7 @@ function close_button() {
   ShowClickedMSOAName();
   BarEngland();
   UpdateBoxes();
+  map.flyTo({center:[-0.840388033475420, 52.920856159299575], zoom:5.2});
 };
 
 document.getElementById("clear_selection").addEventListener("click", close_button);
