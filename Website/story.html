@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Marmot's Mappers - Story Page </title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name='author' content='Amy Chan' />
+  <link rel="stylesheet" href="./css/final_style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo">MARMOT'S MAPPERS</label>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a class="active" href="./story.html">Story</a></li>
+      <li><a href="./project.html">Visualisation</a></li>
+      <li><a href="./about.html">About</a></li>
+
+    </ul>
+  </nav>
+
+  <!-- Story Container -->
+  <div class="storycontainer">
+
+    <div class="emptyBottom">
+      <p>
+      </p>
+    </div>
+
+    <!-- Story Title -->
+    <div id="stitle">
+      <h1><i>"I thought that health was a manifestation of the way we organize society, and that by asking about health in society, we're asking about society itself."</i></h1><br>
+      <h2>- Michael Marmot, 2002</h2>
+    </div>
+
+    <!-- INTRODUCTION -->
+    <div class="stxt">
+      <p>
+        In an investigative report on health equity, Michael Marmot (2010) described a steep social gradient associated with health and the social status of people, and the complex interactivity between the economic status of people, their behaviours
+        and their associated health outcomes.
+
+        Inspired by Marmot's Work, we chose to further explore England's health inequalities on a spatial scale, and to create an impactful tool that expresses the spatial variation in ethnicities, age, economic status and health in England.
+
+        The tool is comprised of the spatial distribution of mortality ratio for deaths from causes considered preventable, as well as proportions of preventable deaths by cause. Further, health-focused geodemographic profiles have been identified
+        for each Middle Super Output Area (MSOA) in England. <b>Explore the menu below to learn more about our process. </b>
+      </p>
+
+    </div>
+
+    <!--    <div class="emptyBottom">
+      <p>
+      </p>
+    </div> -->
+
+    <button type="button" class="collapsible">
+      <h2>Data Sources</h2>
+    </button>
+    <!-- DATA SOURCES -->
+    <div class="content">
+      <div class="shtxt">
+        <h1>Data Sources</h1>
+      </div>
+
+      <div id="scentaltxt">
+        <p>
+          The following data sources were used to create the health and equity tool, highlighting health inqualities in England:
+        </p>
+      </div>
+
+      <div class="sdsimgcontainer">
+        <div class="positionLeft">
+          <figure>
+            <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/adhocs/12508numberofdeathsandagestandardisedavoidabletreatableandpreventablemortalityratesbysexandmiddlelayersuperoutputareamsoaengland2008to2012and2013to2017"
+              target="_blank" rel="noopener noreferrer"><img src="./photos/onslogo4.png" alt="Image of the Office for National Statistic's logo and link to the ONS preventable deaths dataset"></a>
+          </figure>
+        </div>
+
+        <div class="positionRight">
+          <h3>Preventable Deaths</h3>
+          <p>
+            Age standardised mortality ratio for deaths from causes considered preventable by MSOA.
+            <p><b>Year of data:</b> 2013-2017</p>
+          </p>
+        </div>
+        <div style="clear: both;"> </div>
+        <div class="positionLeft">
+
+          <figure>
+            <a href="https://www.nomisweb.co.uk/query/construct/summary.asp?mode=construct&version=0&dataset=575#" target="_blank" rel="noopener noreferrer"><img src="./photos/nomislogo.png"
+                alt="Image of NOMIS Database's logo and link to the Nomis ethnicities dataset"></a>
+          </figure>
+
+        </div>
+
+        <div class="positionRight">
+          <h3>Preventable Deaths by Cause</h3>
+          <p>
+            Number of deaths by cause at MSOA level. Aggregated into main cause groups:
+            ‘Lung cancer’, ‘Ischaemic heart diseases’, ‘Chronic lower respiratory diseases’, ‘Cerebrovascular diseases’, ‘Oesophageal cancer’, ‘Accidental Injuries’, ‘Other’.
+            <p><b>Year of data:</b> 2011</p>
+          </p>
+        </div>
+
+
+
+        <div style="clear: both;"> </div>
+        <div class="positionLeft">
+          <figure>
+            <a href="https://fingertips.phe.org.uk/profile/local-health/data#page/0/gid/1938133180/ati/3/iid/93084/age/169/sex/4/cid/4/tbm/1" target="_blank" rel="noopener noreferrer"><img src="./photos/phelogo4.png"
+                alt="Image of Public Health England's logo and link to PHE's Age dataset"></a>
+          </figure>
+        </div>
+
+        <div class="positionRight">
+          <h3>Age Data</h3>
+          <p>
+            Proportion of MSOA populations in age brackets:
+            ‘0-15’, ‘16-24’, ‘25-64’,and ‘65+’
+            <p><b>Year of data:</b> 2011</p>
+          </p>
+        </div>
+        <div style="clear: both;"> </div>
+
+        <div class="positionLeft">
+          <figure>
+            <a href="https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019" target="_blank" rel="noopener noreferrer"><img src="./photos/onslogo4.png"
+                alt="Image of the Office for National Statistic's logo and link to the ONS English Indicies of Deprivation 2019 Dataset"></a>
+          </figure>
+        </div>
+
+        <div class="positionRight">
+          <h3>English Indicies of Deprivation 2019</h3>
+          <p>
+            English Index of Multiple Deprivation (IMD) Scores by MSOA.
+            <p><b>Year of data:</b> 2019</p>
+          </p>
+        </div>
+        <div style="clear: both;"> </div>
+
+        <div class="positionLeft">
+          <figure>
+            <a href="https://www.nomisweb.co.uk/query/construct/summary.asp?mode=construct&version=0&dataset=575#" target="_blank" rel="noopener noreferrer"><img src="./photos/nomislogo.png"
+                alt="Image of NOMIS Database's logo and link to the Nomis ethnicities dataset"></a>
+            <figure>
+        </div>
+
+        <div class="positionRight">
+          <h3>Ethnicities Dataset</h3>
+          <p>
+            Proportion of MSOA populations in ethnicity groupings:
+            ‘Black’, ‘Chinese-Other’, and Subcont’.
+            <p><b>Year of data:</b> 2011</p>
+
+          </p>
+        </div>
+        <div style="clear: both;"> </div>
+      </div>
+    </div>
+
+    <button type="button" class="collapsible">
+      <h2>Spatial Scale</h2>
+    </button>
+    <!-- SPATIAL SCALE -->
+    <div class="content">
+      <div class="shtxt">
+        <h1>Spatial Scale</h1>
+      </div>
+
+      <div id="sssimgcontainer">
+        <div class="positionLeft">
+          <img src="./photos/britain_msoa_boundaries2.png" id="msoaimg" alt="Image of Britain's MSOA Boundaries">
+        </div>
+
+        <div class="positionRight">
+          <div class="stxtr" id='spatial_scale'>
+
+            <p>
+              The visualisation tool presents data at Middle Super Output Area (MSOA) Level. MSOAs are geographical areas, created to facilitate the representations of small-area statistics in England. MSOAs comprise of areas with an average
+              population of 7200. The boundaries defined in 2011 were used for the analysis, comprising of 6791 areas.
+            </p><br>
+            <p>
+              We use MSOA Level data as it is the finest spatial scale at which all the data used for analysis was available. This allows for a more detailed analysis at a scale disaggregated enough to observe local variations in the data.
+            </p>
+          </div>
+        </div>
+        <div style="clear: both;"> </div>
+      </div>
+    </div>
+
+    <button type="button" class="collapsible">
+      <h2>Distribution of Variables</h2>
+    </button>
+    <!-- INDIVIDUAL VARIABLES -->
+    <div class="content">
+      <div class="shtxt">
+        <h1>Distribution of Variables</h1>
+      </div>
+
+      <div id="spdimgcontainer">
+        <div class="positionLeft">
+          <div id="spdChart"></div>
+        </div>
+
+        <div class="positionRight">
+          <div id="sImdChart"></div>
+        </div>
+
+        <div class="positionLeft">
+          <div id="sAgeChart"></div>
+        </div>
+
+        <div class="positionRight">
+          <div id="sEthnicityChart"></div>
+        </div>
+
+        <div style="clear: both;"> </div>
+      </div>
+
+      <div id="centered_text">
+        <p>
+          By looking at the distirbution of our variables above, we can already make a few interesting observations. The preventable deaths and IMD data both exhibit skew to the right, where the tail of the distribution is considerably longer on the
+          right. This that there are a small number of MSOAs that are performing significantly poorly in terms of deaths and deprivation, driving the national average upward. <br><br>
+
+          The distribution of ages across England, particularly those aged 64 and over suggests that there is quite a wide variation of age breakdowns in MSOAs across the country, with some areas having a significantly older or younger population.
+          The distribution of ethnicities highlights the fact that most MSOAs have a significant majority white population, however there are a small number of areas where minority ethnic groups make up the majority of inhabitants. <br>
+
+
+        </p>
+      </div>
+
+      <div class="emptyBottom">
+        <p>
+        </p>
+      </div>
+    </div>
+
+
+    <button type="button" class="collapsible">
+      <h2>Analysis</h2>
+    </button>
+    <!-- METHODOLOGY -->
+    <div class="content">
+      <div class="shtxt">
+        <h1>Analysis</h1>
+      </div>
+
+      <div id="centered_text">
+        <div class="stxtr">
+          <p>
+          <h2>Causes of Death Analysis</h2>
+          <p>
+            Using the 2019 avoidable mortality definition from the <a href="https://consultations.ons.gov.uk/health-and-life-events/avoidable-mortality-definition/">Office for National Statistics </a>, number of deaths by cause counts from <a
+              href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/causesofdeath/datalist?size=50">nomis' mortality statistics</a> were used to estimate the proportions of deaths in each MSOA broken down by cause of death.
+            The findings are included in the visualisation when you click on an MSOA.
+          </p>
+          </p>
+        </div>
+      </div>
+      <div style="clear: both;"> </div>
+
+      <div id="centered_text">
+        <div class="stxtr">
+          <p>
+          <h2>Geodemographic Analysis</h2>
+          <p>
+            Geodemographic analysis attempts to characterise people according to where they live and is centred on the premise that people live with others like themselves, who share similar demographics and lifestyles.Recently, there has been
+            significant growth in the use of geodemographic approaches within the healthcare sector. As such, by linking our health variable – preventable deaths – to our variables focused on ethnicity, age and deprivation, we take advantage of
+            geodemographics’ potential to elucidate qualitative insights and new understandings about a population. </p>
+          </p>
+        </div>
+      </div>
+
+
+      <div id="centered_text">
+        <div class="stxtr">
+          <p>
+          <h2>Cluster Analysis</h2>
+          <p>
+            As part of our geodemographic analysis, a cluster analysis was carried out, grouping MSOAs based on their similarity to one another in terms of the variables discussed above. Our analysis makes use of the K-means clustering. Put simply,
+            K-means clustering aims to group similar data together and expose underlying patterns. To achieve this goal, the clustering algorithm looks for a fixed number (k) of clusters in the dataset. To determine k we made use of several metrics,
+            each measuring a different thing. For instance, the total within sum of squares, silhouette coefficients, and the Davies-Bouldin index. As these metrics measure different things, the optimum number of clusters that each suggested were not
+            always consistent. Thus, we combined the insight gleaned from these results with our intuition on what looked best to arrive at the final number of clusters: k = 7. </p>
+          </p>
+        </div>
+      </div>
+      <div style="clear: both;"> </div>
+    </div>
+
+  </div>
+
+
+
+  <button type="button" class="collapsible">
+    <h2>Geodemographic Profiles</h2>
+  </button>
+  <!-- Profiles -->
+  <div class="content">
+    <div id="centered_text">
+      <div class="stxtr">
+        <p>
+        <h2>Geodemographic Profiles</h2>
+        <p>
+          Below are the descriptions of the 7 geodemographic profiles idenitfied from the cluster analysis. These clusters should be interpreted carefully, as they are not suggestive of causal pathways. They do, however, provide a simple and
+          effective preliminary assessment of who and where our institutions are failing on the most important matter of life itself. </p>
+        </p>
+      </div>
+    </div>
+
+
+    <div id="Cluster1" class="ClusterDescriptionStory">
+      <h2>1. On the margin</h2>
+      <p>This cluster is characterised by mostly being
+        geographically located on England’s coast.
+        All the variables differ slightly from the national average,
+        except for ‘Subcont’ which equals England’s average.</p>
+    </div>
+    <div id="Cluster2" class="ClusterDescriptionStory">
+      <h2>2. Less ethnically diverse national portrait</h2>
+      <p>MSOAs in this cluster are slightly less ethnically diverse pockets.
+        The remaining variables closely follow the national averages.</p>
+    </div>
+    <div id="Cluster3" class="ClusterDescriptionStory">
+      <h2>3. Sprinkles of death, deprivation and ethnicity</h2>
+      <p>Scattered and extremely ethnically diverse MSOAs that are the most deprived and most prone to preventable deaths.
+        The 65+ population is also noticeably lower than the national average.</p>
+    </div>
+    <div id="Cluster4" class="ClusterDescriptionStory">
+      <h2>4. Slightly older and less risky</h2>
+
+      <p>Covering most of (rural) England, MSOAs within this cluster have the highest 65+ population by percentage,
+        are least at risk of preventable deaths, and are comfortably less deprived than the national average.</p>
+    </div>
+    <div id="Cluster5" class="ClusterDescriptionStory">
+      <h2>5. Young and multicultural metropolitan</h2>
+      <p>Extremely ethnically diverse urban areas that have noticeably larger than average 16-24 and 25-64 populations, and a smaller 65+ population.
+        MSOAs within this cluster also have a slightly lower likelihood of preventable death.</p>
+    </div>
+    <div id="Cluster6" class="ClusterDescriptionStory">
+      <h2>6. Prosperous and ethnically uniform suburban enclaves</h2>
+      <p>MSOAs within this cluster are the least ethnically diverse, having the 2nd lowest multiple deprivation score,
+        and are also significantly less prone to preventable deaths.</p>
+    </div>
+    <div id="Cluster7" class="ClusterDescriptionStory">
+      <h2>7. Scattered pockets of life and prosperity</h2>
+      <p>This cluster is characterised as being the least deprived and the least prone to preventable deaths.
+        The remaining variables closely resemble the national averages.
+    </div>
+
+  </div>
+
+
+  <button type="button" class="collapsible">
+    <h2>Additional Resources</h2>
+  </button>
+  <!-- ADDITIONAL RESOURCES -->
+  <div class="content">
+    <div id="centered_text">
+      <div class="stxtr">
+        <p>
+        <h2>Additional Resources</h2>
+        <ul>
+          <li><a href="/files/MarmotReview.pdf" download> 	&#8226; Fair Society, Healthy Lives- The Marmot Review (2010) </li>
+            <li><a href="/files/10YearsOn.pdf" download> 	&#8226;  Health Equity in England: the Marmot
+Review 10 Years On</li>
+          <li><a href="/files/MarmotReview.pdf" download> 	&#8226; Our In-depth Report </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="emptyBottom">
+    <p>
+    </p>
+  </div>
+
+  <footer>
+    <a href="https://github.com/signesw/Seeya_later" target="_blank" rel="noopener noreferrer">
+      <img alt="Github Logo" src="./photos/GitHub-Mark-Light-64px.png" width="25" height="25">
+    </a>
+    <p>
+      (c)2021
+    </p>
+  </footer>
+
+</body>
+
+<script type="text/javascript" src="data/deaths.json"></script>
+<script type="text/javascript" src="data/age.json"></script>
+<script type="text/javascript" src="data/imd.json"></script>
+<script type="text/javascript" src="data/eth.json"></script>
+<script type="text/javascript" src="scripts/story.js"></script>
+
+</html>

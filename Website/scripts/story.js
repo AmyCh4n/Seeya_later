@@ -170,7 +170,7 @@ const achart = Highcharts.chart('sAgeChart', {
         title: { text: '' },
         opposite: false
     }, {
-        title: { text: 'Percentage of Population',
+        title: { text: 'Percentage of Population in MSOA (%)',
         style:{
           color: '#ffff',
         }},
@@ -430,7 +430,7 @@ const ethchart =Highcharts.chart('sEthnicityChart', {
         title: { text: '' },
         opposite: false
     }, {
-        title: { text: 'Percentage of Population',
+        title: { text: 'Percentage of Population in MSOA (%)',
         style:{
           color: '#ffff',
         }},

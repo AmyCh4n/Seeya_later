@@ -12,6 +12,14 @@ footer {
   width: 100%;
 }
 
+footer a{
+  color:white;
+}
+
+footer a:hover{
+  color:Orange;
+}
+
 
 body {
   position: relative;
@@ -236,7 +244,7 @@ nav a:hover {
 .featureone {
   text-align: center;
   line-height: 2;
-  color: #F27405;
+  color: white;
 }
 
 /*feature 2*/
@@ -269,7 +277,7 @@ nav a:hover {
 #featuretwo {
   text-align: center;
   line-height: 2;
-  color: #F27405;
+  color: white;
 }
 
 /*feature 3*/
@@ -301,7 +309,7 @@ nav a:hover {
 .featurethr {
   text-align: center;
   line-height: 2;
-  color: #F27405;
+  color: white;
 }
 
 /* --------------------------------- ABOUT US PAGE ---------------------------------------------------------*/
@@ -598,18 +606,18 @@ blockquote{
   font-size: 20px;
 }
 
-*:focus {
+/*:focus {
   outline: none;
-}
+}*/
 
-input:focus:invalid, textarea:focus:invalid {
+.message input:focus:invalid, textarea:focus:invalid {
   /* when a field is considered invalid by the browser */
   background: #fff url(images/invalid.png) no-repeat 98% center;
   box-shadow: 0 0 5px #d45252;
   border: 1px solid #b03535;
 }
 
-input:required:valid, textarea:required:valid {
+.message input:required:valid, textarea:required:valid {
   /* when a field is considered valid by the browser */
   background: #fff url(images/valid.png) no-repeat 98% center;
   box-shadow: 0 0 5px #5cd053;
@@ -748,7 +756,8 @@ input[type='radio']:checked~label {
   height: auto;
   font-size: 14px;
   padding: 5%;
-  border-radius: 10px
+  border-radius: 10px;
+  color:white;
 }
 
 .ClusterDescription u {
@@ -799,6 +808,52 @@ input[type='radio']:checked~label {
   cursor: pointer;
 }
 
+
+.slider {
+font: bold 12px/20px 'Poppins';
+position: absolute;
+width: 24%;
+top: 2px;
+right: 40px;
+padding: 10px;
+z-index: 1000;
+color: #35478C;
+display: none;
+
+
+}
+
+.slider .slider-inner {
+background-color:rgba(255,255,255,0.8);
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+border-radius: 3px;
+padding: 10px;
+margin-bottom: 10px;
+border: 2px solid;
+border-color: #557AB5
+}
+
+.slider label {
+display: block;
+margin: 0 0 10px;
+}
+
+.slider input {
+  background: #F27405;
+background-color: transparent;
+display: inline-block;
+width: 100%;
+position: relative;
+margin: 0;
+cursor: ew-resize;
+}
+
+.slider input::-moz-range-progress {
+        height: 0.5em;
+        background: #7b1c1a;
+    }
+
+
 .map-overlay {
   position: absolute;
   bottom: 0;
@@ -820,6 +875,7 @@ input[type='radio']:checked~label {
   margin-bottom: 40px;
   width: 200px;
   display: none;
+  border-radius: 3px;
   border: 2px solid;
   border-color: #557AB5;
   color: #35478C;
@@ -956,9 +1012,54 @@ input[type='radio']:checked~label {
 
 .stxtr {
   width: 100%;
-  padding: 5px 5px 5px 5px;
+  padding: 5px 5px 40px 5px;
+  text-align: justify;
 }
 
+.stxtr a{
+  color: white;
+}
+.stxtr a:hover{
+  color: #F27405;
+}
+
+#centered_text{
+  text-align: justify;
+  padding: 0px 80px 0px 80px;
+  color: white;
+  }
+
+#centered_text h2{
+  text-align: center;
+  padding: 20px;
+}
+
+#centered_text ul{
+  text-align: left;
+  font-size: 20px;
+  padding: 20px;
+}
+
+
+.ClusterDescriptionStory h2{
+  text-align: center;
+  padding-bottom: 20px;}
+
+
+.ClusterDescriptionStory {
+  border: 1px solid white;
+  margin: 50px 200px 50px 200px;
+  vertical-align: middle;
+  height: auto;
+  padding: 2%;
+  border-radius: 10px;
+  color:white;
+}
+
+.ClusterDescription u {
+  font-weight: bold;
+  font-style: italic;
+}
 
 #scentaltxt {
   text-align: center;
@@ -993,6 +1094,7 @@ input[type='radio']:checked~label {
   max-height: 0;
   overflow: hidden;
   background-color: #557AB5;
+  color: white;
   /*padding-bottom: 50px;*/
   transition: max-height 0.2s ease-out;
 }
@@ -1099,7 +1201,7 @@ input[type='radio']:checked~label {
   height: auto;
 }
 
-/*-------------------------------Story page Footer---------------------*/
+
 
 /* -----------------------The ScrollBar ----------------------*/
 /* width */

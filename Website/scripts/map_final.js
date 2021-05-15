@@ -110,6 +110,7 @@ cluster_div.scrollIntoView({ block: 'center',  behavior: 'smooth' });
 //Function that returns the death data depending on selected MSOA and draws the chart
 function GetDeathData(code) {
   $.getJSON("http://dev.spatialdatacapture.org:" + 8707 + "/data/MSOACode/" + code, function(data) {
+    console.log(code);
     //Get list of counts from data returned by API
     barchartdata = [{
         y: data[0].lung_prop,
@@ -153,7 +154,7 @@ function GetDeathData(code) {
         style: {
           color: '#ffff'
         },
-        text: 'Causes of Death'
+        text: 'Preventable Causes of Death'
       },
       subtitle: {
         style: {
@@ -179,7 +180,7 @@ function GetDeathData(code) {
           style: {
             color: '#ffff'
           },
-          text: 'Portion of Recorded Preventable Deaths'
+          text: 'Proportion of Recorded Preventable Deaths'
         },
         labels: {
           formatter: function() {
@@ -253,7 +254,7 @@ function BarEngland() {
       style: {
         color: '#ffff'
       },
-      text: 'Causes of Death'
+      text: 'Preventable Causes of Death'
     },
     subtitle: {
       style: {
@@ -279,7 +280,7 @@ function BarEngland() {
         style: {
           color: '#ffff'
         },
-        text: 'Portion of Recorded Preventable Deaths'
+        text: 'Proportion of Recorded Preventable Deaths'
       },
       labels: {
         formatter: function() {
@@ -310,6 +311,11 @@ function BarEngland() {
 
 // When map loads...
 map.on('load', function() {
+
+//Get slider value
+  var slider = document.getElementById('slider');
+  var sliderValue = document.getElementById('slider-value');
+
   // Load the MSOA geojson data
   map.addSource('MSOAs', {
     'type': 'geojson',
@@ -441,9 +447,27 @@ map.on('load', function() {
         8, ['case', ['boolean', ['feature-state', 'clicked'], false], 2, 0.2] //Change size based on clicked state
       ]
     }
-
-
   });
+
+  slider.addEventListener('input', function (e) {
+// Adjust the layers opacity. layer here is arbitrary - this could
+// be another layer name found in your style or a custom layer
+// added on the fly using `addSource`.
+map.setPaintProperty(
+'msoa',
+'fill-opacity',
+parseInt(e.target.value, 10) / 100
+);
+
+map.setPaintProperty(
+'allclusters',
+'fill-opacity',
+parseInt(e.target.value, 10) / 100
+);
+
+// Value indicator
+sliderValue.textContent = e.target.value + '%';
+});
 
   //-----------------Interactivity Functions -----------------------
   function HoverColour() {
@@ -592,12 +616,14 @@ function DisplayLayer() {
       // Hide the clusters layer (if it's not already hidden)
       map.setLayoutProperty('allclusters', 'visibility', 'none');
       map.setLayoutProperty('clusters-borders', 'visibility', 'none');
+      $('.slider').show()//Show the slider
       // Show the deaths layer
       map.setLayoutProperty('msoa', 'visibility', 'visible');
       map.setLayoutProperty('msoa-borders', 'visibility', 'visible');
       //Draw the england barchart
       BarEngland();
       $('#legend').show(); //Shows the legend
+      $('.slider').show();//Show the slider
     }
     //Reset variables
     click="";
@@ -640,7 +666,10 @@ function close_button() {
   ShowClickedMSOAName();
   BarEngland();
   UpdateBoxes();
-  map.flyTo({center:[-0.840388033475420, 52.920856159299575], zoom:5.2});
+};
+function zoomout(){
+  map.flyTo({center:[-0.840388033475420, 52.920856159299575], zoom:5.2})
 };
 
 document.getElementById("clear_selection").addEventListener("click", close_button);
+document.getElementById("clear_selection").addEventListener("click", zoomout);
