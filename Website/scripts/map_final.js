@@ -214,29 +214,29 @@ function GetDeathData(code) {
 function BarEngland() {
   barchartdata = barchartdata = [{
       y: 28.52,
-      val: 29690
+      val: 27964
     }, {
       y: 25.61,
-      val: 26668
+      val: 25112
     },
     {
-      y: 25.44,
-      val: 26484
+      y: 25.35,
+      val: 24864
     },
     {
-      y: 7.18,
-      val: 7480
+      y: 7.23,
+      val: 7093
     },
     {
-      y: 3.13,
-      val: 3259
+      y: 3.06,
+      val: 2998
     }, {
-      y: 2.04,
-      val: 2119
+      y: 2.06,
+      val: 2024
     },
     {
-      y: 8.08,
-      val: 8411
+      y: 8.17,
+      val: 8014
     }
   ];
 
