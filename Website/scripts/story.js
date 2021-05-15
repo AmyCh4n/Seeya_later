@@ -387,22 +387,23 @@ return parseFloat(item);
 
 /*Make arrays*/
 var lengthlines=lines.length;
-  data = lines.slice(6,lengthlines);
+  data = lines.slice(4,lengthlines);
 
 var edata1 = data.filter(function(value, index, Arr) {
-return index % 6 == 0;
+return index % 4 == 0;
 });
 
+
 var edata2 = data.filter(function(value, index, Arr) {
-return index % 6 == 1;
+return index % 4 == 1;
 });
 
 var edata3 = data.filter(function(value, index, Arr) {
-return index % 6 == 2;
+return index % 4 == 2;
 });
 
 var edata4 = data.filter(function(value, index, Arr) {
-return index % 6 == 3;
+return index % 4 == 3;
 });
 
  /*Draw graph*/

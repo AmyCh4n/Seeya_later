@@ -937,7 +937,7 @@ input[type='radio']:checked~label {
 /*Text styles*/
 #stitle {
   text-align: center;
-  padding: 70px 5px 20px 50px;
+  padding: 100px 50px 20px 50px;
   width: 100%;
 }
 
@@ -951,13 +951,14 @@ input[type='radio']:checked~label {
   display: block;
   max-width: 100%;
   column-count: 2;
-  padding: 50px 50px 30px 50px;
+  padding: 50px 50px 50px 50px;
 }
 
 .stxtr {
   width: 100%;
   padding: 5px 5px 5px 5px;
 }
+
 
 #scentaltxt {
   text-align: center;
@@ -997,15 +998,20 @@ input[type='radio']:checked~label {
 }
 
 /*Container positioning*/
+
+
+
 .positionLeft {
   width: 50%;
   float: left;
   padding: 20px;
+  text-align: center;
 }
 
 .positionRight {
   width: 50%;
   float: right;
+ text-align: left;
   padding: 20px;
 }
 
@@ -1021,10 +1027,10 @@ input[type='radio']:checked~label {
   padding-bottom: 50px;
 }
 
-.sdsimgcontainer figure img {
+.sdsimgcontainer img {
   width: 180px;
   height: 100px;
-  display: block;
+  /*display: block;*/
   margin-left: auto;
   margin-right: auto;
   border-radius: 18%;
@@ -1033,7 +1039,7 @@ input[type='radio']:checked~label {
   transition: .3s ease-in-out;
 }
 
-.sdsimgcontainer figure img:hover {
+.sdsimgcontainer img:hover {
   /*Makes orange shadow appear
   -moz-box-shadow: 100px 0 30px #ccc;
   -webkit-box-shadow: 0 0 30px #ccc;
@@ -1051,6 +1057,7 @@ input[type='radio']:checked~label {
 #msoaimg {
   max-width: 100%;
   height: auto;
+  max-height: 500px;
 }
 
 /*Preventable Deaths*/
