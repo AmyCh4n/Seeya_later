@@ -4,6 +4,8 @@ This repository contains all the files used in producing the coursework requirem
 
 The **Data Team** Folder contains all the files and Jupyter notebooks used as part of the data analysis.
 
+The **data** Folder includes all the raw data files used in the analysis
+
 The **Website** Folder contains all the files used in building the final website for the coursework. 
 
 The website can be accessed at : http://dev.spatialdatacapture.org/~zcftssw/ NOTE: You must be connected to the UCL VPN to access the website
