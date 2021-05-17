@@ -38,6 +38,8 @@
 
     </ul>
   </nav>
+
+  <!-- Side-panel -->
   <div id="side_panel">
     <h2>HEALTH AND EQUITY TOOL</h2>
     <p>
@@ -114,6 +116,7 @@
       </div>
     </div>
   </div>
+    <!-- Map -->
   <div id="mapbox">
     <div class="slider">
     <div class="slider-inner">
@@ -132,9 +135,9 @@
       <i>*100 = expected deaths</i>
     </div>
   </div>
+      <!--More info modal -->
   <div id="myModal" class="modal">
 
-    <!-- Modal content -->
     <div class="modal-content">
       <p> <span id='close_info' class="close">&#10006;</span></p>
       <h2>More information about data</h2>
@@ -165,7 +168,8 @@
   </div>
 </body>
 
-<!-- SCRIPTS w-->
+<!-- SCRIPTS -->
+<!-- Loading mapbox map -->
 <script type="text/javascript">
   mapboxgl.accessToken = 'pk.eyJ1IjoiemNmdHNzdyIsImEiOiJja212c24wdW4wNmsxMm9tdG5udzVsMjd4In0.HB4Oh1U4CqgR4psD72awjQ';
   // Set bounds to UK
@@ -193,10 +197,9 @@
     }), 'top-left'
   );
 </script>
+<!-- Loading other scripts -->
 <script type='module' src='./scripts/map_final.js'></script>
 <script type='module' src='./scripts/pop_up.js'></script>
-
-
 
 
 </html>

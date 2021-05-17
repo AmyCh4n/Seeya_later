@@ -3,6 +3,7 @@ map.on('load', function() {
   $('#Deaths').removeAttr('disabled');
   $('#Clusters').removeAttr('disabled');});
 
+//Display html feature depending on which radio button
 $(document).ready(function(){
 $('input[type="radio"]').click(function() {
   if ($(this).is(':checked')) {
